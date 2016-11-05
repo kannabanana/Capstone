@@ -1,0 +1,110 @@
+\documentclass[letterpaper,10pt,titlepage,draftclsnofoot,onecolumn]{IEEEtran}
+\linespread{1}
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+\usepackage{listings}
+
+\usepackage{balance}
+\usepackage[TABBOTCAP, tight]{subfigure}
+\usepackage{enumitem}
+\usepackage{pstricks, pst-node}
+
+\usepackage{geometry}
+\usepackage{titling}
+\geometry{textheight=8.5in, textwidth=6in}
+
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+\def\name{Garrett Amidon}
+
+
+%% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  pdfauthor = {\name},
+  pdfkeywords = {cs461 ''Senior Capstone''},
+  pdftitle = {CS 461 Senior Capstone: Problem Statement},
+  pdfsubject = {CS461 Senior Capstone},
+  pdfpagemode = UseNone
+}
+
+\title{Energy Effeciency Center Website \\
+	\large Sofware Requirements Specifications}
+\author{Garrett Amidon, SR Kanna, James O'Neal}
+
+\begin{document}
+\begin{titlingpage}
+    \maketitle
+	\centering{}
+    \begin{abstract}
+        OSU’s Energy Efficiency Center help manufacturing and industrial companies increase their productivity and reduce their energy footprint by producing reports for energy and productivity recommendations. These reports, projects and funds are maintained in their website.\newline
+
+		The website has been developed and maintained by several programmers. As a result, the website has become disorganized, difficult to update and use. In order to remedy these issues we will design a secure, user friendly website with good code practices for the Energy Efficiency Center.\newline
+
+		Furthermore, the website is not accessible from mobile devices which decreases productivity of workers who cant access the website while on the job site. We aim to create a secure mobile app for the client which they are able to remotely access.
+    \end{abstract}
+\end{titlingpage}
+
+\newpage
+
+\tableofcontents{}
+
+\newpage
+
+\section{Introduction}
+
+\subsection{Purpose}
+
+\subsection{Product Scope}
+
+\subsection{Definitions}
+
+\subsection{References}
+
+\subsection{Overview}
+
+\section{Overall Description}
+
+\subsection{Product Perspective}
+
+\subsubsection{System Interfaces}
+
+\subsection{User Interfaces}
+
+\subsection{Hardware Interfaces}
+
+\subsection{Software Interfaces}
+
+\subsection{Communication Interfaces}
+
+\subsection{Memory Constraints}
+
+
+
+The EEC needs a minimum of four core functionalities for this website. An employee time tracking system where time can be billed to a specific task. A project task creation, editing, and viewing tool. A database of all employees and their relevant data such as contact info, start date, and credentials. A homepage with all the most important information and links readily available. Performing these functions is the minimum requirement of a useful EEC website.\newline
+In order to solve this problem we will deliver a professional website with the aforementioned functionality at the Exposition. This website will be functional and ready to deploy for all EEC employees.
+
+\subsection{Mobile}
+
+The mobile app will be more condensed and be presented in a manner that is more appropriate to fit smaller screens. By creating a mobile app and website that are both accessible and easy to use, we will solve the problem of not being able to access the server while in the field. 
+
+
+\section{Metrics}
+
+Our performance metrics will be defined by the EEC’s current website. Comparing our implementation to the previous implementation will measure how well the defined functionality and needs were addressed. This can all be done with a side by side comparison of each component to see how the two websites compare. Cleanliness of code, ease of use, and functionality are the three metrics which our site will be measured. Success will look like a large improvement in all three of these areas. Testing and comparing can be done by employees who currently use and maintain the site including our supervisor, Anya. 
+
+
+\end{document}
