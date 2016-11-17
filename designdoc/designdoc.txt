@@ -1,0 +1,5 @@
+-restructured latex
+-Due December 4th
+-Meet with Anya and begin user stories again
+-finalize our design with client approval
+-begin writing document w/the design
