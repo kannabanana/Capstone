@@ -44,7 +44,7 @@
 }
 
 \title{Energy Effeciency Center Website \\
-	\large Tech Review}
+	\large Software Design Description}
 \author{Garrett Amidon, SR Kanna, James O'Neal\\ Team \#36, Team WinniethePooh}
 
 \begin{document}
@@ -53,7 +53,7 @@
 	\centering{}
     \begin{abstract}
         
-        OSU’s Energy Efficiency Center help manufacturing and industrial companies increase their productivity and reduce their energy footprint by producing reports for energy and productivity recommendations. These reports, projects and funds are maintained in their website. The website has been developed and maintained by several programmers. As a result, the website has become disorganized, difficult to update and use. In order to remedy these issues we will design a secure, user friendly website with good code practices for the Energy Efficiency Center. Furthermore, the website is not accessible from mobile devices which decreases productivity while on the job site. With enough time, we would like to create a secure mobile app for the client which they are able to remotely access. This document will show the options available to fix these issues and which we think are best. 
+        OSU's Energy Efficiency Center help manufacturing and industrial companies increase their productivity and reduce their energy footprint by producing reports for energy and productivity recommendations. These reports, projects and funds are maintained in their website. The website has been developed and maintained by several programmers. As a result, the website has become disorganized, difficult to update and use. In order to remedy these issues we will design a secure, user friendly website with good code practices for the Energy Efficiency Center. Furthermore, the website is not accessible from mobile devices which decreases productivity while on the job site. With enough time, we would like to create a secure mobile app for the client which they are able to remotely access. This document will show the options available to fix these issues and which we think are best. 
         
     \end{abstract}
 \end{titlingpage}
@@ -90,26 +90,24 @@ For the purpose of this standard, the following terms and definitions apply.
 \begin{description}
 \item[Agile: ] a software engineering project method style
 \item[Waterfall: ] a software engineering project method style
-\item[User Stories: ] A tool in Agile to understand what prioritize the user’s needs.
+\item[User Stories: ] A tool in Agile to understand what prioritize the user's needs.
 \item[Energy Efficiency Center: ] The clients
 \item[Security:] defense of computers against intrusion and unauthorized use of resources
 \item[Login:] an act of logging in to a computer, database, or system
 \item[User Interface:] the means by which the user and a computer system interact
 \item[Projects and Tasks:] projects and tasks must be added, edited, and viewed
-\item[Viewing User’s Work Hours:] employee work hours must be recorded and restricted 
+\item[Viewing User's Work Hours:] employee work hours must be recorded and restricted 
 \item[Time Clock: ] employees should be able to clock in and out while simultaneously assigning hours worked
-\item[Employee Records:] Display and edit employee’s information
+\item[Employee Records:] Display and edit employee's information
 \end{description}
 
 \section{Conceptual Model for Software Design Descriptions}
-\subsection{Software design in context}
+\subsection{Software Design In Context}
 
 This section creates conceptual models for the intended audience. The conceptual model will act as a guide for the developers and can be referenced by clients and managers for a high-level understanding.
 
-\subsection{Software Design in Context}
-
-\includegraphics{UML}
-
+\includegraphics[scale=0.75]{UML}
+\newline Fig. 1: above is a diagram depicting the depencies and connections between design elements.
 \subsection{Software Design Descriptions Within the Life Cycle}
 
 Login credentials are sent to the database to be verified. Upon valid response the login page will redirect to the homepage. The homepage will provide navigation to all other pages. The projects and tasks page will query the database for relevant information. The projects and tasks page will include access to clock functionalities. Clock in and out interface with projects and tasks in order to view and update them. Employee information also needs to connect with projects and tasks in order to display relevant data. All three functionalities interact with the database to read and update data. 
@@ -133,7 +131,7 @@ They are described in detail in the remainder of the clause.
 
 \subsection{Security}
 
-Security should be designed alongside the software. Threats to consider and our criteria for evaluation include malicious SQL injections, forgetting to update software, XSS, error messages, server side validation, passwords, file uploads and SSL among others. All of the security scanning software being considered is open-source, so price is not an issue. Netsparker addresses sql injection and XSS, but fails to focus the other main security threats. Netsparker is noted for it’s ease of use. OpenVas is the most extensive of the three security scanning options, since it can test over 25000 vulnerabilities. However, it’s difficulty to use and time consumption is notorious. Fiddler focuses on vulnerabilities in HTTP traffic, which does not address any criteria except authenticity. OpenVas has the most rigorous security scanning model and meets the most criteria. However, if it’s too difficult and time-consuming to use, then Netsparker should be supplemented to the scanning process.
+Security should be designed alongside the software. Threats to consider and our criteria for evaluation include malicious SQL injections, forgetting to update software, XSS, error messages, server side validation, passwords, file uploads and SSL among others. All of the security scanning software being considered is open-source, so price is not an issue. Netsparker addresses sql injection and XSS, but fails to focus the other main security threats. Netsparker is noted for it's ease of use. OpenVas is the most extensive of the three security scanning options, since it can test over 25000 vulnerabilities. However, it's difficulty to use and time consumption is notorious. Fiddler focuses on vulnerabilities in HTTP traffic, which does not address any criteria except authenticity. OpenVas has the most rigorous security scanning model and meets the most criteria. However, if it's too difficult and time-consuming to use, then Netsparker should be supplemented to the scanning process.
 
 \subsection{Login}
 
@@ -141,19 +139,19 @@ Login in websites should prevent against common attacks such as sql injections, 
 
 \subsection{User Interfaces}
 
-Users expect aesthetics and ease of use when interacting with web applications. CSS tools like Bootstrap, Foundation and Boilerplate provide structure, navigation and aesthetic appeal on all web platforms. All three are responsive web tools and all three provide HTML and CSS frameworks for forms, buttons, Javascript extensions, typography. Bootstrap and Foundation’s offerings are more extensive than Boilerplate’s. All three are supported by multiple browsers, but Bootstrap and Foundation are the most extensive. However, Boilerplate is the most lightweight platform option. Bootstrap has a large open-source platform and is geared towards engineers to use and contribute to. Foundation is primarily used by large corporations. I am also extremely familiar with Bootstrap, so there would be a minimal learning curve or time wasted. Under the categories of structure, aesthetics, time and responsiveness, I recommend using Bootstrap. 
+Users expect aesthetics and ease of use when interacting with web applications. CSS tools like Bootstrap, Foundation and Boilerplate provide structure, navigation and aesthetic appeal on all web platforms. All three are responsive web tools and all three provide HTML and CSS frameworks for forms, buttons, Javascript extensions, typography. Bootstrap and Foundation's offerings are more extensive than Boilerplate's. All three are supported by multiple browsers, but Bootstrap and Foundation are the most extensive. However, Boilerplate is the most lightweight platform option. Bootstrap has a large open-source platform and is geared towards engineers to use and contribute to. Foundation is primarily used by large corporations. I am also extremely familiar with Bootstrap, so there would be a minimal learning curve or time wasted. Under the categories of structure, aesthetics, time and responsiveness, I recommend using Bootstrap. 
 
 \subsection{Projects and Tasks}
 
-\tab A gantt chart for visualizing projects and tasks can be displayed using Google charts. This API designed by google runs using embedded javascript. Google charts is one of the simplest gantt chart API’s because all that is needed is the google chart libraries and a database to populate the chart. One of the most important parts of this API its integrated cross-platform and cross-browser compatability. It is fully customizable with many useful features such as grouping tasks and task dependencies. The chart is rendered using SVG which is widely used and open source. Finally, the API is very well documented providing example code and tutorials.\newline
+\tab A gantt chart for visualizing projects and tasks can be displayed using Google charts. This API designed by google runs using embedded javascript. Google charts is one of the simplest gantt chart API's because all that is needed is the google chart libraries and a database to populate the chart. One of the most important parts of this API its integrated cross-platform and cross-browser compatability. It is fully customizable with many useful features such as grouping tasks and task dependencies. The chart is rendered using SVG which is widely used and open source. Finally, the API is very well documented providing example code and tutorials.\newline
 
-\tab Projects and tasks are vital to the operation and organization of the EEC. In order to stay on track and be productive employees need to keep track of projects and tasks. Additionally they need a clear view of project timelines and status of specific tasks. All this information needs to be easily viewable and readily available. The best technology to implement a solution is Google Charts. The API looks great and has highly customizable files. It is excellently documented and includes tutorials and examples. It includes drag and drop functionality giving it high usability. It is built on SVG creating a stable open source platform that will be maintained for the future. Overall this API is better than the others because it is both simple to implement and use.
+\tab Projects and tasks are vital to the operation and organization of the EEC. In order to stay on track and be productive employees need to keep track of projects and tasks. Additionally, they need a clear view of project timelines and status of specific tasks. All this information needs to be easily viewable and readily available. The best technology to implement a solution is Google Charts. The API looks great and has highly customizable files. It is excellently documented and includes tutorials and examples. It includes drag and drop functionality giving it high usability. It is built on SVG creating a stable open source platform that will be maintained for the future. Overall this API is better than the others because it is both simple to implement and use.
 
 \subsection{Viewing User's Work Hours}
 
-Tabulator is a jQuery plugin which includes features such as pagination and filtering. The biggest advantage of this table is that it allows for direct table input editing. This would allow end users to update and submit data within the table allowing for quicker updates. The table accepts a wide range of data inputs including Ajax, JSON, and HTML. Unfortunately this plugin does not include customization options for its appearance. However, it has a simple design and includes graphics for added clarity. \newline
+Tabulator is a jQuery plugin which includes features such as pagination and filtering. The biggest advantage of this table is that it allows for direct table input editing. This would allow end users to update and submit data within the table allowing for quicker updates. The table accepts a wide range of data inputs including Ajax, JSON, and HTML. Unfortunately, this plugin does not include customization options for its appearance. However, it has a simple design and includes graphics for added clarity. \newline
 
-\tab Displaying employee hours is important for the employees and their supervisor. They need clear visuals that allow them to verify correct inputs. Additionally they will not want a complex or time consuming process for managing and updating their hours. To accomplish this the best technology to use is Tabulator. With tabulator the table view of hours is consistent and easy to read. It supports organization and pagination features which will make finding specific rows easy. Interactive editing will allow users to quickly update and manage their hours. Tabulator’s documentation, features, and ease of use put it ahead of the other options.
+\tab Displaying employee hours is important for the employees and their supervisor. They need clear visuals that allow them to verify correct inputs. Additionally they will not want a complex or time consuming process for managing and updating their hours. To accomplish this the best technology to use is Tabulator. With tabulator the table view of hours is consistent and easy to read. It supports organization and pagination features which will make finding specific rows easy. Interactive editing will allow users to quickly update and manage their hours. Tabulator's documentation, features, and ease of use put it ahead of the other options.
 
 \subsection{Code Readability}
 
@@ -168,7 +166,7 @@ Tabulator is a jQuery plugin which includes features such as pagination and filt
 
 \subsection{Time Clock}
 
-\par The site needs a system that allows employees to clock in and clock out for certain projects, as long as they don’t go over the amount of time allotted to that project. With a database, when a project is posted, it will log the start date and the amount of available hours on the project. After doing so, we can create a system of clocking in to a database and then keeping track of how many hours before clocking out. When they clock in, they will be notified of how many hours are available on the project and will clock them out if they go over the posted amount. With this system it will insure that no one over works a certain project and that the company won’t be spending extra time on projects. Also, if the manager decides to change the amount of time on a project, this can easily be done so in the database. \newline
+\par The site needs a system that allows employees to clock in and clock out for certain projects, as long as they don't go over the amount of time allotted to that project. With a database, when a project is posted, it will log the start date and the amount of available hours on the project. After doing so, we can create a system of clocking in to a database and then keeping track of how many hours before clocking out. When they clock in, they will be notified of how many hours are available on the project and will clock them out if they go over the posted amount. With this system it will insure that no one over works a certain project and that the company won't be spending extra time on projects. Also, if the manager decides to change the amount of time on a project, this can easily be done so in the database. \newline
 
 
 \par Again, the best way to handle this system is through database handling. The named time clocks are great for keeping track of when someone clocks in and out, but not for when someone goes over hours on a certain project. With a database, we can store when a project is started and how much time it can be worked on. After doing so, when an employee goes to clock in, it can notify them the available hours left on that project and won't allow them to go past the posted amount. 
@@ -183,20 +181,50 @@ Tabulator is a jQuery plugin which includes features such as pagination and filt
 
 \subsection{Introduction}
 
-\begin{tabular}{ | l | l | l | }
-\hline
-	Design Viewpoint & Design Concerns & Example Design Languages \\ \hline
-	Interaction (5.2) (user interacts with) & Clock in, Login, employee records, taks/projects view, User Interface, view hours worked &  \\ \hline
-	 &  &  \\ \hline
-	Dependency (5.3)  & Security, login, database &  \\ \hline
-	 &  &  \\ \hline
-	Functional (5.4) & Security, Login, User Interface, Viewing and Editing Projects/Task, Viewing work hours, Code readability, Database Management, Clock in/out, Employee records &  \\ \hline
-	 &  &  \\ \hline
-	Information (5.5) & Database Management, User Interface &  \\ \hline
-	 &  &  \\ \hline
-	Development (5.6) & Code Readability, Security, Database Management &  \\ \hline
-	 &  &  \\ \hline
-\end{tabular}
+The following viewpoints and design elements will be discussed in the following format:
+
+\begin{enumerate}
+\item{Interaction (5.2)}
+\begin{itemize}
+\item{Time Clock}
+\item{Login}
+\item{Employee Records}
+\item{Projects and Tasks}
+\item{User Interfaces}
+\item{Viewing User's Work Hours}
+\end{itemize}
+\item{Dependency (5.3)}
+\begin{itemize}
+\item{Security}
+\item{Login}
+\item{Database Management}
+\end{itemize}
+\item{Functional (5.4)}
+\begin{itemize}
+\item{Security}
+\item{Login}
+\item{User Interfaces}
+\item{Projects and Tasks}
+\item{Viewing User's Work Hours}
+\item{Code Readability}
+\item{Database Management}
+\item{Time Clock}
+\item{Employee Records}
+\end{itemize}
+\item{Information (5.5)}
+\begin{itemize}
+\item{User Interfaces}
+\item{Database Management}
+\end{itemize}
+\item{Development (5.6)}
+\begin{itemize}
+\item{Code Readability}
+\item{Security}
+\item{Database Management}
+\end{itemize}
+\end{enumerate}
+
+
 
 \subsection{Interactions Viewpoint}
 
@@ -224,10 +252,10 @@ Tabulator is a jQuery plugin which includes features such as pagination and filt
 \tab The user must be able to log hours into projects they have worked on. Also, users should be notified if they have exceeded the allotted amount of time for that project. To do this, the user will have the option to enter their project hours by interacting with a web page. From there, the webpage will send a request to the database and the database will send a notification back. This notification will either tell the user that everything was submitted successfully, exceeded the allotted time, or if there was an error.\newline
 
 
-\tab When landing on the Energy Efficiency Center’s web page, you should always land on the Login page. The login page will ask the user for their username and password before letting them proceed any further. Upon hitting submit, the web page will use php to check for potential security risks and send the (safe) information securely to the database and check to make sure it is valid using SQL. If the login information is invalid, a notification will be sent back to the user saying so and will not let them move any further into the webpage. If the login information is valid, the database will send a notification back to the webpage and then the webpage will redirect the user to the homepage.\newline
+\tab When landing on the Energy Efficiency Center's web page, you should always land on the Login page. The login page will ask the user for their username and password before letting them proceed any further. Upon hitting submit, the web page will use php to check for potential security risks and send the (safe) information securely to the database and check to make sure it is valid using SQL. If the login information is invalid, a notification will be sent back to the user saying so and will not let them move any further into the webpage. If the login information is valid, the database will send a notification back to the webpage and then the webpage will redirect the user to the homepage.\newline
 
 
-\tab The employee records page should act as a “profile” page. This page will display the user’s personal information such as their name, contact information, start date, position in company, and projects worked on. Upon landing on this page, the web page will use php to send an SQL query to the database to retrieve the current logged in user’s information. The database will then send this information back to the web page and will lay it out for the user to interact with. At the top of the page the user will see their name and personal information and have the option to edit their contact information if needed. The user will also be able to view their most recent projects they have worked on, as well as have the option to view all their projects.  \newline
+\tab The employee records page should act as a “profile” page. This page will display the user's personal information such as their name, contact information, start date, position in company, and projects worked on. Upon landing on this page, the web page will use php to send an SQL query to the database to retrieve the current logged in user's information. The database will then send this information back to the web page and will lay it out for the user to interact with. At the top of the page the user will see their name and personal information and have the option to edit their contact information if needed. The user will also be able to view their most recent projects they have worked on, as well as have the option to view all their projects.  \newline
 
 
 \tab The projects page should be the landing page that the user ends up on when trying to view all the available projects. From there the user will be able to click on any of the projects and be brought to a new page that displays the Gantt chart, using Google Charts, as well as a list of all the tasks for this project. When clicking on a task, it will show the description of the task, allotted hours for this task, and how many hours have been logged on this task. \newline
@@ -273,11 +301,11 @@ The user interface determines how the employee records, clock in/out, and projec
 
 \subsection{Functional Viewpoint}
 
-The functional viewpoint describes the system’s functional elements, their responsibilities, interfaces, and primary interactions. As well as focuses on the system as a whole and it’s ability to change, secured and runtime performance.
+The functional viewpoint describes the system's functional elements, their responsibilities, interfaces, and primary interactions. As well as focuses on the system as a whole and it's ability to change, secured and runtime performance.
 
 \subsubsection{Design Concerns}
 
-To make everything functional, it is a concern that we will be able to create an experience for users that is both visually appealing and have reliable performance. Everything should function properly and the user’s view should not look cluttered or unappealing. 
+To make everything functional, it is a concern that we will be able to create an experience for users that is both visually appealing and have reliable performance. Everything should function properly and the user's view should not look cluttered or unappealing. 
 
 \subsubsection{Design Elements}
 
@@ -319,7 +347,7 @@ To make sure the system as a whole can be easily changed, we will make sure the 
 Since most of the functionality is done through the database, choosing a database that is reliable and usable is of highest importance. By going with an SQL database, it will make it easy to manage, retrieve and store information. The database will be primarily accessed by the user through other functionality on the web page. 
 
 
-The final feature is the ability for user to look at their employee record. Upon clicking on the employee record option, it should show the user’s name and contact information and the ability to change it, if needed. It will also show their most recent tasks they have clocked in on and the ability to check the rest. All this information will be retrieved from the SQL database.
+The final feature is the ability for user to look at their employee record. Upon clicking on the employee record option, it should show the user's name and contact information and the ability to change it, if needed. It will also show their most recent tasks they have clocked in on and the ability to check the rest. All this information will be retrieved from the SQL database.
 
 \subsection{Information Viewpoint}
 
