@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>How to Start with dhtmlxGantt</title>
+   <script src="codebase/dhtmlxgantt.js"></script>   
+   <link href="codebase/dhtmlxgantt.css" rel="stylesheet">  
+</head>
+ 
+<body>
+    <div id="gantt_here" style='width:1000px; height:400px;'></div>
+    <script type="text/javascript">
+	gantt.config.xml_date = "%Y-%m-%d %H:%i";
+        
+	gantt.config.scale_unit = "month";
+	gantt.config.date_scale = "%F, %Y";
+
+	//gantt.config.scale_unit = "day"; 
+	//gantt.config.date_scale = "%d %M, %D";
+
+	gantt.init("gantt_here");	
+	gantt.load('data.php');//loads data to Gantt from the database
+
+	var dp=new gantt.dataProcessor("data.php");  
+	dp.init(gantt);
+
+    </script>
+</body>
+</html>
