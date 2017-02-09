@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title class="animated infinite bounce"> SR KANNA</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link href="../css/home.css" rel="stylesheet">	
+  <link href="home.css" rel="stylesheet">	
   <link href="../animate.css/animate.min.css" rel="stylesheet">
 
  
@@ -16,227 +15,43 @@
   body {
       position: relative; 
   }
-  #section1 {padding-top:100px;height:730px;color: white; background-image: url(wedding.JPG);}
-  #section2 {padding-top:50px;height:300px;color: black; background-color:white;}
-   #section3 {padding-top:50px;height:700px;color: black; background-color:white;}
-  #section42 {padding-top:100px;height:500px;color: black; background-image: url(orcas.png);}
-  #section51 {padding-top:100px;height:1200px;color:black; background-color:white;}
+  #section1 {padding-top:100px;height:730px;color: white; background-image: url(factory.jpg);}
   </style>
+
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-      </button>
-    <a class="navbar-brand" href="#">SR KANNA</a>
-    </div>
-    <div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href="#section1"></a></li>
-          <li><a href="#section2">ABOUT</a></li>
-          <li><a href="#section51">TOPICS</a></li>
-          <li><a href="#section3">MY PROJECTS</a></li>
-          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">CV & SKILLS <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="cv.html">CV</a></li>
-	     <li><a href="cv.html#section2">Skills</a></li>
-           </ul>
-	 <li><a href="#section42">CONTACT</a></li>
-          </li>
-       </ul>
-      </div>
-    </div>
-  </div>
-</nav>    
+                 <form data-toggle="validator" role="form" class="navbar-form pull-right" action="submit_login.php" autocomplete="off" method="post">
+                      <input class="span2" name="username" type="text" placeholder="Username" required>
+                      <input class="span2" name="password" type="password" placeholder="Password" required>
+                      <button type="submit" class="btn">Sign in</button>
+                  </form>
+
+      <div class="container">
+          <div class="row">
+      <!-- --------------------------------- Registration Form --------------------------------- -->
+              <div class="col-md-6">
+                  <div class="container-fluid">
+                          <form data-toggle="validator" role="form" autocomplete="off" action="login.php" method="post">
+                              <div class="form-group col-lg-12">
+                                  <label for="username" class="control-label">Username</label>
+                                  <input name="username" type="text" class="form-control" placeholder="Username" required>
+                              </div>
+                              <div class="form-group col-sm-6">
+                                  <label for="password" class="control-label">Password</label>
+                                  <input name="password" type="password" data-minlength="5" class="form-control" id="password" placeholder="Password" required>
+                                  <span class="help-block">Minimum of 5 characters</span>
+                              </div>
+                              <div class="form-group">
+                                  <button type="submit" class="btn btn-primary">Submit</button>
+                              </div>
+                      </form>
+                  </div>
+              </div>
+	
 
 <div id="section1" class="container-fluid animated flipInX"> 
-  <h1 align=center>SR KANNA</h1>
 <br>
-</div>
-
-
-<div id="section2" class="container-fluid">
-<h1 class="animated infinite slideOutUp">ABOUT</h1>
-<hr>
-<div id="about">
-<p>
-
-Hi! Call me Kanna (kah-naa). I'm a PCNW native. I'm specializing in security and networking, but I'm pretty interested in anything. Check out my <a href="https://github.com/kannabanana">github</a> or <a href="#section3">projects</a> to see what I'm working on now. Feel free to shoot me an <a href="mailto:parisindia@gmail.com">email</a> if you'd like to collaborate.</p>
-<br>
-
-<br>
-<br>
-<p>I'd like to use my personal website as a reference website as well. I'll be periodically updating cool or essential CS tools/topics. Topics will range from GDB, Security, to Bootstrap.</p>
-
-
-
-</div>
-</div>
-
-
-<div id="section51" class="container-fluid">
-<h1>TOPICS</h1>
-<hr>
-<br>
-<p>Click on any of these links to learn more</p>
-<br>
-
-
-
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 animated infinite pulse">
- <div class="hovereffect">
-        <img class="img-responsive" src="https://mikecvet.files.wordpress.com/2010/07/python.jpg" alt="python">
-            <div class="overlay">
-				<p> 
-					<a href="#">PYTHON</a>
-				</p> 
-            </div>
-    </div>
-</div>
-
-
-
-
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 animated infinite pulse">
- <div class="hovereffect">
-        <img class="img-responsive" src="http://egurukool.seedinfotech.com/pluginfile.php/7624/course/overviewfiles/Calculator-Icon.png" alt="C/C++">
-            <div class="overlay">
-				<p> 
-					<a href="topics.html/#section3">C/C++</a>
-				</p> 
-            </div>
-    </div>
-</div>
-
-
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 animated infinite pulse">
- <div class="hovereffect">
-        <img class="img-responsive" src="https://octodex.github.com/images/octobiwan.jpg" alt="GITHUB">
-            <div class="overlay">
-				<p> 
-					<a href="#">GITHUB</a>
-				</p> 
-            </div>
-    </div>
-</div>
-
-
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 animated infinite pulse">
- <div class="hovereffect">
-       <img class="img-responsive" src="http://www.syntaxxx.com/wp-content/uploads/2014/02/twitter-bootstrap.jpg" alt="BOOTSTRAP">
-            <div class="overlay">
-				<p> 
-					<a href="#">BOOTSTRAP</a>
-				</p> 
-            </div>
-    </div>
-</div>
-
-<br>
-<br>
-
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 animated infinite pulse">
- <div class="hovereffect">
-        <img class="img-responsive" src="http://www.webopedia.com/FIG/PROG-LAN.gif" alt="ASSEMBLY">
-            <div class="overlay">
-				<p> 
-					<a href="#">ASSEMBLY</a>
-				</p> 
-            </div>
-    </div>
-</div>
-
-
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 animated infinite pulse">
- <div class="hovereffect">
-        <img class="img-responsive" src="http://www.ibmsystemsmag.com/getattachment/c247b44e-07b3-4ca9-9724-d913fb9dc3c2/" alt="GDB/VALGRIND">
-            <div class="overlay">
-				<p> 
-					<a href="topics.html">GDB/VALGRIND</a>
-				</p> 
-            </div>
-    </div>
-</div>
-
-
-</div>
-</div>
-
-<div id="section3" class="container-fluid">
-  <h1 class="animated infinite bounce" align=center>MY PROJECTS</h1>
-<hr>
-<br>
-
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 animated infinite pulse">
- <div class="hovereffect">
-        <img class="img-responsive" src="https://octodex.github.com/images/octobiwan.jpg" alt="GITHUB">
-            <div class="overlay">
-				<p> 
-					<a href="http://web.engr.oregonstate.edu/~minic/cs290/CS290Project/signIn.html">SOURCE OF EVERYTHING</a>
-				</p> 
-            </div>
-    </div>
-</div>
-
-
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 animated infinite pulse">
- <div class="hovereffect">
-        <img class="img-responsive" src="https://i.ytimg.com/vi/NtygqtkHy18/hqdefault.jpg" alt="FORTUNE TELLER - WEB DEV">
-            <div class="overlay">
-				<p> 
-					<a href="http://web.engr.oregonstate.edu/~minic/cs290/CS290Project/signIn.html">FORTUNE TELLER - WEB DEV</a>
-				</p> 
-            </div>
-    </div>
-</div>
-
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 animated infinite pulse">
- <div class="hovereffect">
-        <img class="img-responsive" src="https://www.youtube.com/yt/brand/media/image/YouTube-logo-full_color.png" alt="Mini Youtube - Telly">
-            <div class="overlay">
-				<p> 
-					<a href="http://web.engr.oregonstate.edu/~kannas/database-pr/Database-Project/views/">MINI YOUTUBE: TELLY</a>
-				</p> 
-            </div>
-    </div>
-</div>
-
-
-
-
-</div>
-
-
-
-<div id="section42" class="container-fluid">
-<br>
-<div id="contact">	
-<center>
-	<h1>CONTACT ME</h1>
-	<hr>
-	<p>Be yourself; Everyone else is already taken. </p>
-	<p>~ Oscar Wilde</p>
-	<br>
-	<p> Hi! Please feel free to use any of these links as methods to get in touch or give me a follow. I'd love to hear your thoughts! </p>
-	<br>
-	<br>
-	<address>
-	<a href="mailto:parisindia@gmail.com">Email</a>
-	<br>
-	<a href="https://github.com/kannabanana">Github</a>
-	<br>
-	<a href="https://www.instagram.com/kanna_banana6/">Insta</a>
-	<br>
-	<a href="https://www.facebook.com/s.r.kanna.95">FB</a>
-	<br>
-	</address>
-</center>
 </div>
 
 </div>
