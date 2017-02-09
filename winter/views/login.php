@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<!--	<link rel="stylesheet" href="http://designyourlife.com.au/wp-content/themes/designyourlife/css/main.css">	-->
 <head>
 </head>
 <body>
@@ -52,6 +53,7 @@
      if ($var) {
         
       echo '<p>Your new account has been successfully created. You\'re now ready to log in.</p>';
+	
      }
      else{
        echo '<p>Failure</p>';
