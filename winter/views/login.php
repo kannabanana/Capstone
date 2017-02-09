@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <!--	<link rel="stylesheet" href="http://designyourlife.com.au/wp-content/themes/designyourlife/css/main.css">	-->
+	<link rel="stylesheet" href="login.css">
 <head>
 </head>
 <body>
