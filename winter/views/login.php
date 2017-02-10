@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<!--	<link rel="stylesheet" href="http://designyourlife.com.au/wp-content/themes/designyourlife/css/main.css">	-->
 	<link rel="stylesheet" href="login.css">
 <head>
 </head>
@@ -17,24 +16,13 @@
   if (!$dbc) {
     die('Could not connect: ' . mysql_error());
   }
- // or die("Error connecting to database server");
-
-
-  //mysql_select_db($DBNAME, $dbc)
-   // or die("Error selecting database: $DBNAME");
-
-  //echo 'Successfully connected to database!';
-
-
+else{
   if (isset($_POST['submit'])) {
-    // Grab the profile data from the POST
    $user_name = $_POST['user_name'];
-   echo $user_name;
   $password = $_POST['password'];
-   echo $password;
+}
 
-
-    if (!empty($sid)) {
+    if (!empty($user_name)) {
   
       // Make sure someone isn't already regist
       $query = "SELECT * FROM log_in WHERE user_name = '$user_name'";
@@ -72,7 +60,8 @@
       echo '<p class="error">You must enter all of the sign-up data.</p>';
     }
   }
-
+*/
+}
   mysqli_close($dbc);
 ?>
 
