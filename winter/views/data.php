@@ -1,6 +1,6 @@
 <?php
  
-include ('codebase/connector/gantt_connector.php');
+include ('../codebase/connector/gantt_connector.php');
  
 $res=mysql_connect("oniddb.cws.oregonstate.edu","onealja-db","hV2BZQqWqsdJcz97");
 mysql_select_db("onealja-db");
