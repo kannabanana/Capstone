@@ -22,6 +22,4 @@ else {
     echo "Error: " . $sql . "<br>" . mysqli_error($db);
 }
 
-// Close connection
-$db->close();
 ?>

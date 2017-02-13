@@ -47,8 +47,5 @@
       echo '<p class="error">You must enter all of the sign-up data.</p>';
     }
   }
-*/
-}
-  mysqli_close($db);
 ?>
 
