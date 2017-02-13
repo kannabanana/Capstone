@@ -14,17 +14,22 @@
 
 <?php 
 $id = $_SESSION["id"];
-if($result = $db->query("select first_name, last_name, user_name, phone_number, email from employee_information where user_id = '$id'")){
+if($result = $db->query("select * from employee_information where user_id = '$id'")){
 		while($obj = $result->fetch_object()){
 			$first = htmlspecialchars($obj->first_name);
 			$last = htmlspecialchars($obj->last_name);
 			$user = htmlspecialchars($obj->user_name);
 			$phone = htmlspecialchars($obj->phone_number);
 			$email = htmlspecialchars($obj->email);
+			$major = htmlspecialchars($obj->major);
+			$current = htmlspecialchars($obj->current);
+			$hire_date = date_create(htmlspecialchars($obj->hire_date));
+			$end_date = date_create(htmlspecialchars($obj->end_date));
+			$week_hours = htmlspecialchars($obj->week_hours);
+			$image_data = $obj->pic;
 		}
 		$result->close();
 } ?>
-
 
 <div class="container">
       <div class="row">
@@ -42,7 +47,8 @@ if($result = $db->query("select first_name, last_name, user_name, phone_number, 
               <h3 class="panel-title"><?php echo $first; ?> <?php echo $last;?> </h3>
             </div>
             <div class="panel-body">
-              <div class="row">                
+              <div class="row">     
+				<div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="data:image/jpeg;base64,<?php echo base64_encode( $image_data ); ?>" class="img-circle img-responsive" /> </div>
                 <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
                   <dl>
                     <dt>EMAIL:</dt>
@@ -65,7 +71,23 @@ if($result = $db->query("select first_name, last_name, user_name, phone_number, 
                       <tr>
                         <td>Phone:</td>
                         <td><?php echo $phone;  ?></td>
-                      </tr>             
+                      </tr>  
+					  <tr>
+                        <td>Major:</td>
+                        <td><?php echo $major;  ?></td>
+                      </tr> 
+					  <tr>
+                        <td>Hire Date:</td>
+                        <td><?php echo date_format($hire_date, "m/d/Y");  ?></td>
+                      </tr> 
+					  <tr>
+                        <td>Expected End Date:</td>
+                        <td><?php echo date_format($end_date, "m/d/Y");  ?></td>
+                      </tr> 
+					  <tr>
+                        <td>Weekly Hours:</td>
+                        <td><?php echo $week_hours;  ?></td>
+                      </tr> 
                     </tbody>
                   </table>
                   
