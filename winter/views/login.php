@@ -6,54 +6,41 @@
 <body>
 <?php
 
-  require_once('connect.php');
+  include("_header.php");
   // Connect to the database
   
   // Define database connection constants
   
+  if (isset($_POST['submit'])){
+	  $user_name = $_POST['user_name'];
+	  $password = $_POST['password'];
+	}
 
-  $dbc = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
-  if (!$dbc) {
-    die('Could not connect: ' . mysql_error());
-  }
-else{
-  if (isset($_POST['submit'])) {
-   $user_name = $_POST['user_name'];
-  $password = $_POST['password'];
-}
-
-    if (!empty($user_name)) {
-  
-      // Make sure someone isn't already regist
+    if (!empty($user_name)){
+      // Make sure someone isn't already registered
       $query = "SELECT * FROM log_in WHERE user_name = '$user_name'";
-      $data = mysqli_query($dbc, $query);
-  
- // if(!$data){
-   // echo "You're not connected!";
-  //} else{
-   // echo "connected.";
-  //}
+      $data = mysqli_query($db, $query);
+
       if (mysqli_num_rows($data) == 0) {
         // The user_name is unique, so insert the data into the database
         echo '<p>attempting to insert</p>';
          $query = "INSERT INTO log_in (user_name, password) VALUES ('$user_name', '$password')";
 
-        $var = mysqli_query($dbc, $query);
-     if ($var) {
-        
-      echo '<p>Your new account has been successfully created. You\'re now ready to log in.</p>';
-	
-     }
-     else{
-       echo '<p>Failure</p>';
-     }
-        mysqli_close($dbc);
+        $var = mysqli_query($db, $query);
+		
+		if ($var){
+			echo '<p>Your new account has been successfully created. You\'re now ready to log in.</p>';
+		}
+		else{
+			echo '<p>Failure</p>';
+		}
+        mysqli_close($db);
         exit();
-      }
+		}
       else {
-  echo $user_name;
-        // An account already exists for this user_name, so display an error message
-        echo '<p class="error">An account already exists for this student id. Please use a different student id.</p>';
+		  echo $user_name;
+		  // An account already exists for this user_name, so display an error message
+		  echo '<p class="error">An account already exists for this user name. Please use a different one.</p>';
       }
     }
     else {
@@ -62,6 +49,6 @@ else{
   }
 */
 }
-  mysqli_close($dbc);
+  mysqli_close($db);
 ?>
 

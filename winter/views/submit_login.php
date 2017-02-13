@@ -1,11 +1,8 @@
 <?php
 /* Main login script */
 
-// Start PHP Session
-session_start();
-
 // Connect to database
-include 'database_configuration.php';
+include("_header.php");
 
 // Declare variables
 $username        = $_POST[username];
@@ -13,16 +10,16 @@ $password        = $_POST[password];
 $hashed_password = base64_encode(hash('sha256', $password));
 
 // Clean username input
-$cleanUser = mysqli_real_escape_string($conn, $username);
+$cleanUser = mysqli_real_escape_string($db, $username);
 
 // Clean password input and encrypt for database comparison
-$cleanPassword = mysqli_real_escape_string($conn, base64_encode(hash('sha256', $password)));
+$cleanPassword = mysqli_real_escape_string($db, base64_encode(hash('sha256', $password)));
 
 // Define query
-$sql = "SELECT * FROM Users WHERE username = '$cleanUser' AND user_password = '$cleanPassword'";
-
+$sql = "SELECT * FROM log_in WHERE user_name = '$cleanUser' AND password = '$cleanPassword'";
+echo "about to query";
 // Query to find user in database
-if ($query = mysqli_query($conn, $sql)) {
+if ($query = mysqli_query($db, $sql)) {
 
     // Fetch row and create into array
     $userRow = mysqli_fetch_array($query);
@@ -34,16 +31,14 @@ if ($query = mysqli_query($conn, $sql)) {
 
     // Create session variables
     $_SESSION['uid']      = $userRow[0];
-    $_SESSION['username'] = $userRow[1];
-    $_SESSION['major']    = $userRow[3];
 
     // Redirect to user homepage
-header("Location: http://web.engr.oregonstate.edu/~kannas/database-pr/Database-Project/views/homepage.php");
+header("Location: http://web.engr.oregonstate.edu/~onealja/Capstone/capstone/winter/views/homepage.html");
 
 } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    echo "Error: " . $sql . "<br>" . mysqli_error($db);
 }
 
 // Close connection
-$conn->close();
+$db->close();
 ?>
