@@ -9,6 +9,10 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="../css/style.css" type="text/css">
 	<script type="text/javascript" src="../js/script.js"></script>	
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
 	<title> Profile </title>
 </head>
 
@@ -30,7 +34,45 @@ if($result = $db->query("select * from employee_information where user_id = '$id
 		}
 		$result->close();
 } ?>
+<div id="wrapper">
 
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="landing.html">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.php">Profile</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+		<!-- Start Wrapper -->
+<div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+		<!-- Insert Code after here to make it appear on the RHS of screen -->
 <div class="container">
       <div class="row">
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
@@ -104,7 +146,21 @@ if($result = $db->query("select * from employee_information where user_id = '$id
             
           </div>
         </div>
+		<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
       </div>
+	  
     </div>
-	
+	<!-- End Wrapper Div Tags -->
+	    </div>
+    </div>
+</div>
+	<!-- Script for menu toggle -->
+	<script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 </html>
