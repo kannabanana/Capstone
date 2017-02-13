@@ -19,24 +19,22 @@ $cleanUser = mysqli_real_escape_string($db, $user_name);
 $sql = "SELECT user_id FROM log_in WHERE user_name = '$cleanUser' AND password = '$clamped_pass'";
 
 // Query to find user in database
-if ($query = mysqli_query($db, $sql)) {
+if ($query = $db->query($sql)) {
 
     // Fetch row and create into array
-    $user_row = mysqli_fetch_array($query);
+    $user_row = $query->fetch_object();
 
     // Check cid for valid account info
-    if (mysql_num_rows($user_row) === 0) {
+    if (empty($user_row)) {
         die ('Invalid Username or Password');
     }
 
     // Create session variables
-    $_SESSION['uid']      = $userRow[0];
-
+    $_SESSION['uid'] = $user_row->user_id;
     // Redirect to user homepage
-header("Location: http://web.engr.oregonstate.edu/~onealja/Capstone/capstone/winter/views/landing.html");
-
-} 
-else {
+	header("Location: landing.php");
+	exit();
+}else {
     echo "Error: " . $sql . "<br>" . mysqli_error($db);
 }
 

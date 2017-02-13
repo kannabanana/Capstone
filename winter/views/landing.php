@@ -39,7 +39,8 @@
                         Home
                     </a>
                 </li>
-				<?php if(isset($_SESSION['uid']) && !empty($_SESSION['uid'])){ 
+				<?php 
+				if(isset($_SESSION['uid']) && !empty($_SESSION['uid'])){ 
 				echo ' 
                 <li>
                     <a href="profile.php">Profile</a>
@@ -74,7 +75,46 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1>Welcome to EEC Homepage</h1>
-                        <p>Use the sidebar to navigate</p>
+						<?php 
+						if(isset($_SESSION['uid']) && !empty($_SESSION['uid'])){echo 
+                        '<p>Use the sidebar to navigate</p>' ;
+						}else{ echo '
+						<div class="jumbotron" style="background-image: url(factory.jpg); height: 700px; background-size: 100%;">
+							<div id="centershit">
+							<form data-toggle="validator" role="form" class="navbar-form pull-right" action="submit_login.php" autocomplete="off" method="post">
+                      <input class="span2" name="user_name" type="text" placeholder="user_name" required>
+                      <input class="span2" name="password" type="password" placeholder="password" required>
+                      <button type="submit" class="btn btn-primary">Sign in</button>
+                  </form>
+
+
+						<div class="container">
+							  <div class="row">
+								  <div class="col-md-6">
+									  <br />
+									  <div class="container-fluid">
+											  <form data-toggle="validator" role="form" autocomplete="off" action="submit_registration.php" method="post">
+												  <div class="form-group col-lg-12">
+													  <label for="user_name" class="control-label">Username</label>
+													  <input name="user_name" type="text" class="form-control" placeholder="user_name" required>
+												  </div>
+												  <div class="form-group col-sm-6">
+													  <label for="password" class="control-label">Password</label>
+													  <input name="password" type="password" data-minlength="5" class="form-control" id="password" placeholder="password" required>
+													  <span class="help-block">Minimum of 5 characters</span>
+												  </div>
+												  <div class="form-group">
+													  <button type="submit" class="btn btn-primary">Submit</button>
+												  </div>
+										  </form>
+									  </div>
+								  </div>
+						   </div>	
+
+
+						</div>
+						</div>'; } ?>
+							
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                     </div>
                 </div>

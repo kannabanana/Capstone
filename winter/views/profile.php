@@ -9,11 +9,21 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="../css/style.css" type="text/css">
 	<script type="text/javascript" src="../js/script.js"></script>	
+	<!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
 	<title> Profile </title>
 </head>
 
 <?php 
-$id = $_SESSION["id"];
+if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
+$id = $_SESSION["uid"];
+
+}
+else{
+die("no user id found");}
 if($result = $db->query("select * from employee_information where user_id = '$id'")){
 		while($obj = $result->fetch_object()){
 			$first = htmlspecialchars($obj->first_name);
@@ -30,13 +40,58 @@ if($result = $db->query("select * from employee_information where user_id = '$id
 		}
 		$result->close();
 } ?>
+ <div id="wrapper">
 
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="landing.php">
+                        Home
+                    </a>
+                </li>
+				<?php 
+				if(isset($_SESSION['uid']) && !empty($_SESSION['uid'])){ 
+				echo ' 
+                <li>
+                    <a href="profile.php">Profile</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>' ;}
+				else {
+				echo "Please Log in";}?>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+		 <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
 <div class="container">
       <div class="row">
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-           <A href="edit.html" >Edit Profile</A>    
+           <!--<A href="edit.html" >Edit Profile</A> -->    
 
-        <A href="edit.html" >Logout</A>
+        <A href="submit_logout.php" >Logout</A>
        <br>
       </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
@@ -106,5 +161,28 @@ if($result = $db->query("select * from employee_information where user_id = '$id
         </div>
       </div>
     </div>
+	<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 	
 </html>
