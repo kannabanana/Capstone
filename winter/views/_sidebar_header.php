@@ -32,6 +32,7 @@
                 <li>
                     <a href="gantt.php">Gantt</a>
                 </li>
+		<!--
                 <li>
                     <a href="#">Projects</a>
                 </li>
@@ -43,7 +44,8 @@
                 </li>
                 <li>
                     <a href="#">Contacts</a>
-                </li>' ;}
+                </li>
+		-->' ;}
 				else {
 				echo "Please Log in";}?>
             </ul>
