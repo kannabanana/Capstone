@@ -7,7 +7,24 @@ include("_header.php");
 // Declare variables
 $user_name        = $_POST[user_name];
 $password        = $_POST[password];
+$first = $_POST[first];
+$last = $_POST[last];
+$phone = $_POST[phone];
+$email = $_POST[email];
+$major = $_POST[major];
+$hire = date("Y-m-d", strtotime($_POST[hire]));
+$hours = $_POST[hours];
 $hashed_password = base64_encode(hash('sha256', $password));
+
+//Check database to see if username is in use already
+$username_check = "SELECT * FROM log_in WHERE user_name = '$user_name'";
+$query = $db ->query($username_check);
+$used_username = $query ->fetch_object();
+if(!empty($used_username)){
+	$_SESSION['success_reg'] = 2;
+	header("Location: registration.php");
+	exit();
+}
 
 do{
 //generate random user id
@@ -22,15 +39,20 @@ $used_id = $query->fetch_object();
 }while(!empty($used_id));
 
 
-$sql = "INSERT INTO log_in (user_id, user_name, password) VALUES ('$user_id','$user_name', '$hashed_password')";
+
+
+$login_table = "INSERT INTO log_in (user_id, user_name, password) VALUES ('$user_id','$user_name', '$hashed_password')";
+$employ_table = "INSERT INTO employee_information (user_id, user_name, first_name, last_name, phone_number, email, major, hire_date, week_hours)
+				VALUES ('$user_id', '$user_name', '$first', '$last', '$phone', '$email','$major','$hire','$hours')";
 
 // Send query
-if (mysqli_query($db, $sql)) {
+if (mysqli_query($db, $login_table) && mysqli_query($db, $employ_table)) {
     // Redirect to login page after successful registration
-	header("Location: landing.php");
+	$_SESSION['success_reg'] = 1;
+	header("Location: registration.php");
 } 
 else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($db);
+    echo "Error: " . $employ_table . "<br>" . mysqli_error($db);
 }
 
 ?>

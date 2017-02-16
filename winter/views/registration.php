@@ -23,6 +23,14 @@ include("_sidebar_header.php");?>
 
 <body>
         <!-- Start Page Content -->
+		<?php 
+		if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){		
+		if(isset($_SESSION['success_reg']) && !empty($_SESSION['success_reg'])){
+			if($_SESSION['success_reg'] === 1){
+				echo '<span style="color:#AFA;text-align:center;">Successful Registration</span>';
+			}else{
+			echo '<span style="color:#E60;text-align:center;">Unsuccessful Registration, username already taken.</span>';}
+			unset($_SESSION['success_reg']);}?>
 <div class="container" >
   <div class="row">
 	  <div class="col-md-6">
@@ -84,5 +92,10 @@ include("_sidebar_header.php");?>
 </div>
 	    <!-- End Page Content -->
 		
-<?php include("_sidebar_footer.php"); ?>
+		<?php }
+		else{
+			echo "Please sign in to access this page";
+			header("Location: landing.php");
+			exit();
+		}include("_sidebar_footer.php"); ?>
 </body>
