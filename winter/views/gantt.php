@@ -12,7 +12,9 @@
     </style>
 
 </head>
- 
+ <?php
+if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
+ ?> 
 <body>
     <input type="radio" id="scale1" name="scale" value="1" checked /><label for="scale1">Day scale</label>
     <input type="radio" id="scale2" name="scale" value="2" /><label for="scale2">Week scale</label>
@@ -93,4 +95,12 @@
     </script>
 </body>
 </html>
-<?php include("_sidebar_footer.php");?>
+<?php 
+}
+else{
+echo "Please sign in to access this page";
+sleep(1);
+header("Location: landing.php");
+exit();
+}
+include("_sidebar_footer.php");?>
