@@ -30,19 +30,19 @@
                     <a href="registration.php">Add New Employee</a>
                 </li>
                 <li>
-                    <a href="#">Overview</a>
+                    <a href="gantt.php">Gantt</a>
                 </li>
                 <li>
-                    <a href="#">Events</a>
+                    <a href="#">Projects</a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="#">Tasks</a>
                 </li>
                 <li>
-                    <a href="#">Services</a>
+                    <a href="#">My Hours</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="#">Contacts</a>
                 </li>' ;}
 				else {
 				echo "Please Log in";}?>
