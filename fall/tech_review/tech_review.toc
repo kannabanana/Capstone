@@ -1,0 +1,29 @@
+\contentsline {section}{\numberline {1}Group Number and Name}{2}{section.1}
+\contentsline {section}{\numberline {2}Team Member Roles}{2}{section.2}
+\contentsline {section}{\numberline {3}End Goals}{2}{section.3}
+\contentsline {section}{\numberline {4}Possible Technologies}{3}{section.4}
+\contentsline {subsection}{\numberline {4.1}Kanna:}{3}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Security:}{3}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Login:}{3}{subsubsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.3}UI}{4}{subsubsection.4.1.3}
+\contentsline {subsection}{\numberline {4.2}James:}{4}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Project/Tasks:}{4}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Employee Hours}{5}{subsubsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.3}Software Quality:}{5}{subsubsection.4.2.3}
+\contentsline {subsection}{\numberline {4.3}Garrett:}{5}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Employee records:}{5}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Database:}{6}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.3}Clock In/Out:}{7}{subsubsection.4.3.3}
+\contentsline {section}{\numberline {5}Decided Technologies}{7}{section.5}
+\contentsline {subsection}{\numberline {5.1}Kanna:}{7}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}Security:}{7}{subsubsection.5.1.1}
+\contentsline {subsubsection}{\numberline {5.1.2}Login:}{8}{subsubsection.5.1.2}
+\contentsline {subsubsection}{\numberline {5.1.3}UI:}{8}{subsubsection.5.1.3}
+\contentsline {subsection}{\numberline {5.2}James:}{8}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Projects and Tasks:}{8}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}Employee Hours:}{8}{subsubsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.3}Software Quality:}{9}{subsubsection.5.2.3}
+\contentsline {subsection}{\numberline {5.3}Garrett:}{9}{subsection.5.3}
+\contentsline {subsubsection}{\numberline {5.3.1}Employee records:}{9}{subsubsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.2}Database:}{9}{subsubsection.5.3.2}
+\contentsline {subsubsection}{\numberline {5.3.3}Clock In/Out:}{9}{subsubsection.5.3.3}
