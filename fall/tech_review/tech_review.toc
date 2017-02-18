@@ -10,8 +10,8 @@
 \contentsline {subsubsection}{\numberline {4.2.1}Project/Tasks:}{4}{subsubsection.4.2.1}
 \contentsline {subsubsection}{\numberline {4.2.2}Employee Hours}{5}{subsubsection.4.2.2}
 \contentsline {subsubsection}{\numberline {4.2.3}Software Quality:}{5}{subsubsection.4.2.3}
-\contentsline {subsection}{\numberline {4.3}Garrett:}{5}{subsection.4.3}
-\contentsline {subsubsection}{\numberline {4.3.1}Employee records:}{5}{subsubsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3}Garrett:}{6}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Employee records:}{6}{subsubsection.4.3.1}
 \contentsline {subsubsection}{\numberline {4.3.2}Database:}{6}{subsubsection.4.3.2}
 \contentsline {subsubsection}{\numberline {4.3.3}Clock In/Out:}{7}{subsubsection.4.3.3}
 \contentsline {section}{\numberline {5}Decided Technologies}{7}{section.5}

@@ -1,0 +1,113 @@
+\documentclass[letterpaper,10pt,titlepage,journal,compsoc,draftclsnofoot,onecolumn]{IEEEtran}
+\linespread{1}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+\usepackage{listings}
+
+\usepackage{balance}
+\usepackage[TABBOTCAP, tight]{subfigure}
+\usepackage{enumitem}
+\usepackage{pstricks, pst-node}
+
+\usepackage{geometry}
+\usepackage{titling}
+\geometry{textheight=8.5in, textwidth=6in}
+
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+\def\name{Garrett Amidon}
+
+
+%% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  pdfauthor = {\name},
+  pdfkeywords = {cs461 ''Senior Capstone''},
+  pdftitle = {CS 461 Senior Capstone: Problem Statement},
+  pdfsubject = {CS461 Senior Capstone},
+  pdfpagemode = UseNone
+}
+
+\title{Energy Effeciency Center Website: \\ Problem Statement}
+\author{Garrett Amidon, SR Kanna, James O'Neal}
+
+\begin{document}
+\begin{titlingpage}
+    \maketitle
+	\centering{}
+    \begin{abstract}
+        
+        OSU’s Energy Efficiency Center help manufacturing and industrial companies increase their productivity and reduce their energy footprint by producing reports for energy and productivity recommendations. These reports, projects and funds are maintained in their website. The website has been developed and maintained by several programmers. As a result, the website has become disorganized, difficult to update and use. In order to remedy these issues we will design a secure, user friendly website with good code practices for the Energy Efficiency Center. 	Furthermore, the website is not accessible from mobile devices which decreases productivity while on the job site. With enough time, we would like to create a secure mobile app for the client which they are able to remotely access.
+        
+    \end{abstract}
+\end{titlingpage}
+
+\newpage
+
+\tableofcontents{}
+
+\newpage
+
+\section{Purpose and Goals}
+
+\tab The Engineering Efficiency Center website is necessary for daily operation. It provides employees with organizational and communication tools for tracking completion of projects. This includes billing hours spent on specific activities, creating project timelines, and viewing employee information. All these processes must work together in order for the center to function efficiently. Currently, the website is not cohesive, upgradeable, or intuitive. As a result, the website needs to be refactored. In order to accomplish this, our group will be creating a new website. This site will provide the necessary functionality for the EEC while also improving upon usability, security, and maintainability.
+
+\section{Current Status}
+
+\tab Currently we have completed a large portion of necessary documentation for the project. The problem statement document defines the current state of the site and what our solution to these problems are. The requirements document lists specifically what will be delivered to the EEC. It defines what signifies completeness as well as metrics to gauge the results. The technology review document specifies how each functionality will be implemented. This includes the specific technology that will be used and why is was chosen. The software design document compiles information from these documents in order to create a design plan for the website. It includes how functionalities are connected, how they are implemented, and design concerns from multiple viewpoints.\newline
+
+\tab The completion of this documentation provides a well defined plan for the implementation of our solution. We are currently preparing to create a new website for the EEC. Our planning has concluded and a clear picture of the project has been defined. Because of this, we are confident that a satisfactory website will be delivered at the Engineering Expo in 2017. 
+
+\section{Problems}
+
+\tab Originally we had an issue trying to find a time where we could meet up to work on our documents and meet with the client. Our schedules only aligned later in the evening. Most of our group meetings and client meetings were done after 5:00. This ended up working for our client and we were able to meet multiple times at the EEC office. Weekly meetings with our TA were also a challenge. We ended up all being able to meet at the last available time on friday. The client was a student as well so meeting for signatures took some communication. Luckily it wasn’t necessary for all of us to be present to get the signature making scheduling easier. Overall scheduling time between, work, clients, and group meetings was a difficult part of this project.\newline
+
+\tab Another issue we had was understanding the IEEE Standards documents and replicating it to work with our document. There was confusion on exactly what the finished documents should look like in terms of formatting and also the content that needed to be included. We ended up spending a large amount of time trying to figure it out but eventually agreed upon a final result. Fortunately, with practice, it became easier to understand the IEEE Standards and we believe we improved with each document. Our beginning documents did not score as well, but we were able to edit these documents to improve our scores. For the Technical Review document, we were required to break our requirements into nine separate pieces. This was difficult for us because our client specified four main functional requirements. We were able to come up with several non-functional requirements to resolve this issue.
+
+\section{Retrospective}
+
+\begin{table}[H]
+			\caption{Retrospective: Fall 2016}
+			\begin{center}
+				\begin{tabular}{| p{0.3\linewidth} | p{0.3\linewidth} | p{0.3\linewidth} | }
+					\hline
+					 \textbf{Positives} & \textbf{Deltas} & \textbf{Actions} \\ [0.5ex]
+					%heading
+					\hline
+					Problem statement is formatted in LaTex  & Create a schedule for remaining documents and finish project proposal & Organize a group meeting and client meeting  \\
+					\hline
+					 Completed problem statement and discused the project description & Edit problem statement and plan the requirements & Go over feedback on problem statement and hold a group meeting \\
+					\hline
+					 Our requirements document draft was turned in & Formatting and additional content need to be updated & Go over feedback on the requirements document with the group \\
+					\hline
+					Project proposal document was returned and revisions to the requirements document have been made & Finish revision of project proposal and begin technology review planning & Have a group meeting to work on revisions and plan for the upcoming document\\
+					\hline
+					Requirements document was submittied. Met with TA to discuss our documents and how to improve our scores & Finish and submit technology review & Hold a group meeting early in the week to get a head start on the technology review\\
+					\hline
+					Created a to-do list planning out the remainder of the term & Begin working on the design document & Meet with the client to discuss design decisions in preparation for the design document  \\
+					\hline
+					Revised and turned in documents for re-evaluation. Completed client meeting about design document & Finish design document and start progress report & Have group meeting to finish design \\
+					\hline
+					 Design document completed and turned in. & Complete progress report and start recording presentation & Organize multiple group meetings for this and next week to complete all work \\
+					\hline
+
+				\end{tabular}
+			\end{center}
+			\end{table}
+
+
+\end{document}
