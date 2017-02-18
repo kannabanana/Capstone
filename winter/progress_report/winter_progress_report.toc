@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {1}Purpose and Goals}{2}{section.1}
+\contentsline {section}{\numberline {2}Kanna}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}Current Progress}{2}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Still To Do}{3}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Roadblocks}{3}{subsection.2.3}
+\contentsline {section}{\numberline {3}Garrett}{3}{section.3}
+\contentsline {subsection}{\numberline {3.1}Current Progress}{3}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Still To Do}{4}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Roadblocks}{4}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Interesting Code}{5}{subsection.3.4}
+\contentsline {section}{\numberline {4}James}{6}{section.4}
+\contentsline {subsection}{\numberline {4.1}Current Progress}{6}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Still To Do}{6}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Roadblocks}{7}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Interesting Code}{7}{subsection.4.4}

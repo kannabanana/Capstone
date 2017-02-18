@@ -8,9 +8,9 @@ GH		= gv
 all: writeup
 
 writeup:
-	latex problem_statement.tex
-	dvips -R -Poutline -t letter problem_statement.dvi -o problem_statement.ps
-	ps2pdf problem_statement.ps
+	latex winter_progress_report.tex
+	dvips -R -Poutline -t letter winter_progress_report.dvi -o winter_progress_report.ps
+	ps2pdf winter_progress_report.ps
 
 clean:
 	rm -f *.ps *.dvi *.out *.log *.aux *.bbl *.blg *.pyg 
