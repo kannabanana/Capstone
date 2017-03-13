@@ -32,12 +32,12 @@
                 <li>
                     <a href="gantt.php">Gantt</a>
                 </li>
-		<!--
                 <li>
-                    <a href="#">Projects</a>
+                    <a href="records.php">Employee Records</a>
                 </li>
-                <li>
-                    <a href="#">Tasks</a>
+		<!--
+				<li>
+                    <a href="#">Projects</a>
                 </li>
                 <li>
                     <a href="#">My Hours</a>

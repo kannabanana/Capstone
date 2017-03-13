@@ -45,21 +45,17 @@ if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
 
 				gantt.config.scale_unit = "week";
 				gantt.config.step = 1;
-				gantt.templates.date_scale = weekScaleTemplate;
 				gantt.config.subscales = [
-					{unit:"month", step:1, date:"%F %y" }
+					{unit:"month", step:1, date:"%M" }
 				];
+				gantt.templates.date_scale = weekScaleTemplate;
 				gantt.config.scale_height = 50;
-				
 				break;
 			case "3":
-				gantt.config.scale_unit = "year";
+				gantt.config.scale_unit = "month";
 				//gantt.config.step = 1;
-				gantt.config.date_scale = "%Y";
+				gantt.config.date_scale = "%F '%y";
 				gantt.config.scale_height = 50;
-				gantt.config.subscales = [
-					{unit:"month", step:1, date:"%F" }
-				];
 				gantt.templates.date_scale = null;
 				break;
 			case "4":
@@ -68,8 +64,7 @@ if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
 				gantt.config.date_scale = "%Y";
 				gantt.config.min_column_width = 50;
 
-				gantt.config.scale_height = 25;
-				gantt.config.subscales = [];
+				gantt.config.scale_height = 50;
 				gantt.templates.date_scale = null;
 				break;
 		}
