@@ -16,8 +16,12 @@
 <body>
 <?php 
 if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
-$id = $_SESSION["uid"];
-
+	if(isset($_GET["u"]) && !empty($_GET["u"])){
+		$id = $_GET["u"];
+		
+	}
+	else
+		echo "No user selected from employee records page.";
 }
 else{
 echo "Please sign in to access this page";
@@ -46,7 +50,7 @@ if($result = $db->query("select * from employee_information where user_id = '$id
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
            <!--<A href="edit.html" >Edit Profile</A> -->    
 
-        <A href="submit_logout.php" >Logout</A>
+        <A href="records.php" >Back to Records Page</A>
        <br>
       </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
@@ -58,9 +62,10 @@ if($result = $db->query("select * from employee_information where user_id = '$id
             </div>
             <div class="panel-body">
               <div class="row">     
-				<?php if(isset($image_data) && !empty($image_data)){?>
+			  <?php if(isset($image_data) && !empty($image_data)){?>
 				<div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="data:image/jpeg;base64,<?php echo base64_encode( $image_data ); ?>" class="img-circle img-responsive" /> </div>
-			  <?php }?>                <div class=" col-md-9 col-lg-9 "> 
+			  <?php }?>
+                <div class=" col-md-9 col-lg-9 "> 
                   <table class="table table-user-information">
                     <tbody>
                       <tr>

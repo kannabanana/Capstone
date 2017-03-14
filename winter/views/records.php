@@ -9,7 +9,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="../css/style.css" type="text/css">
-	<script type="text/javascript" src="../js/script.js"></script>	
+	<script type="text/javascript" src="../js/script.js"></script>
 	<title> Records </title>
 </head>
 
@@ -50,7 +50,7 @@ exit();
 							while($obj = $result->fetch_object()){ 
 								$first = htmlspecialchars($obj->first_name);
 								$last = htmlspecialchars($obj->last_name);
-								$url = "profile.php?u=" . htmlspecialchars($obj->user_id);
+								$url = "display_record.php?u=" . htmlspecialchars($obj->user_id);
 							?>
 				  
 					<tr>
@@ -81,3 +81,4 @@ exit();
 				  $results->close();?>
 </body>	
 </html>
+
