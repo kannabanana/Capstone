@@ -33,7 +33,7 @@ $task_table = "INSERT INTO task ( name, start_date, end_date, `desc`, project_id
 if (mysqli_query($db, $task_table)) {
     // Redirect to login page after successful registration
 	$_SESSION['success_reg'] = 1;
-	header("Location: task_page.php");
+	header("Location: tasks.php");
 } 
 else {
     echo "Error: " . $task_table . "<br>" . mysqli_error($db);

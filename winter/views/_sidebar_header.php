@@ -43,6 +43,12 @@
                 </li>
                 <li>
                     <a href="create_project.php">Create Project</a>
+                </li>
+				<li>
+                    <a href="projects.php">Projects</a>
+                </li>
+				<li>
+                    <a href="tasks.php">Tasks</a>
                 </li>' ;}
 				else {
 				echo "Please Log in";}?>

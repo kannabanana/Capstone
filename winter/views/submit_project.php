@@ -30,7 +30,7 @@ $project_table = "INSERT INTO project (project_type_id, grant_id, start_date, en
 if (mysqli_query($db, $project_table)) {
     // Redirect to login page after successful registration
 	$_SESSION['success_reg'] = 1;
-	header("Location: project_page.php");
+	header("Location: projects.php");
 } 
 else {
     echo "Error: " . $project_table . "<br>" . mysqli_error($db);
