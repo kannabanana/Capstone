@@ -158,6 +158,9 @@ if($result = $db->query("select * from employee_information where user_id = '$id
 								}
 								$last = htmlspecialchars($obj->last_name);
 								$url = "display_task.php?t=" . htmlspecialchars($obj->task_id);
+								if(!isset($logged_hours) || empty($logged_hours)){
+									$logged_hours = 0;
+								}
 							?>
 				  
 					<tr>

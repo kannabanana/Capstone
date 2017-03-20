@@ -32,7 +32,7 @@ if ($query = $db->query($sql)) {
     // Create session variables
     $_SESSION['uid'] = $user_row->user_id;
     // Redirect to user homepage
-	header("Location: landing.php");
+	header("Location: profile.php");
 	exit();
 }else {
     echo "Error: " . $sql . "<br>" . mysqli_error($db);

@@ -11,14 +11,14 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="landing.php">
+                    
                         <?php 
 				if(isset($_SESSION['uid']) && !empty($_SESSION['uid'])){ 
-					echo 'Home';}
+					echo '<A href="submit_logout.php" >Logout</A>';}
 				else{
-					echo 'Login';}?>
+					echo '<a href="landing.php">Login</a>';}?>
 
-                    </a>
+                   
                 </li>
 				<?php 
 				if(isset($_SESSION['uid']) && !empty($_SESSION['uid'])){ 
@@ -35,17 +35,15 @@
                 <li>
                     <a href="records.php">Employee Records</a>
                 </li>
-		<!--
 				<li>
-                    <a href="#">Projects</a>
+                    <a href="assignments.php">Assign Hours</a>
                 </li>
                 <li>
-                    <a href="#">My Hours</a>
+                    <a href="create_task.php">Create Task</a>
                 </li>
                 <li>
-                    <a href="#">Contacts</a>
-                </li>
-		-->' ;}
+                    <a href="create_project.php">Create Project</a>
+                </li>' ;}
 				else {
 				echo "Please Log in";}?>
             </ul>
