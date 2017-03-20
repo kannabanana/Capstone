@@ -63,9 +63,9 @@ if($result = $db->query("select * from employee_information where user_id = '$id
             <div class="panel-body">
               <div class="row">     
 			  <?php if(isset($image_data) && !empty($image_data)){?>
-				<div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="data:image/jpeg;base64,<?php echo base64_encode( $image_data ); ?>" class="img-circle img-responsive" /> </div>
+				<div class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="data:image/jpeg;base64,<?php echo base64_encode( $image_data ); ?>" class="img-circle img-responsive" /> </div>
 			  <?php }?>
-                <div class=" col-md-9 col-lg-9 "> 
+                <div class=" col-md-8 col-lg-8 "> 
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
