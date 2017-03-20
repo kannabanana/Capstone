@@ -36,7 +36,7 @@ else{
 }
 ?>
 
-
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
 <div class="container" >
   <div class="row">
 	  <div class="col-md-6">
@@ -49,11 +49,15 @@ else{
 		  <div class="container-fluid" >
 				  <form data-toggle="validator" role="form" autocomplete="off" action="submit_project.php" method="post">
 					  <div class="form-group col-sm-6">
-						  <label for="project type" class="control-label">Project Type</label>
+						  <label for="name" class="control-label">Project Name</label>
+						  <input name="name" type="text" class="form-control" id="name" placeholder="" required>
+					  </div><br><br><br><br>
+					  <div class="form-group col-sm-6">
+						  <label for="project_type" class="control-label">Project Type</label><br>
 						  
 							<?php
 								$result = $db ->query("SELECT * FROM `project_type`");
-								$option1.="<select name='Project Type'>";
+								$option1.="<select name='project_type'>";
 								while($obj = $result->fetch_object()){
 									
 								   $option1.="<option value=" . $obj->project_type_id . ">" . $obj->name . "</option> ";
@@ -64,12 +68,12 @@ else{
 						  
 					  </div>
 					  <div class="form-group col-sm-6">
-						  <label for="grant type" class="control-label">Project Type</label>
+						  <label for="grant_type" class="control-label">Grant Type</label><br>
 						  
 							<?php
 								if($result2 = $db ->query("SELECT * FROM `grant`")){
 								
-									$option2.="<select name='Grant Type'>";
+									$option2.="<select name='grant_type'>";
 									while($obj2 = $result2->fetch_object()){
 										
 									   $option2.="<option value=" . $obj2->grant_id. ">" . $obj2->nick . "</option> ";
@@ -103,6 +107,7 @@ else{
 		  </div>
 	  </div>
 </div>	
+</div>
 </div>
 </div>
 	    <!-- End Page Content -->
