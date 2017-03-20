@@ -36,7 +36,7 @@ else{
 }
 ?>
 
-
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
 <div class="container" >
   <div class="row">
 	  <div class="col-md-6">
@@ -49,7 +49,12 @@ else{
 		  <div class="container-fluid" >
 				  <form data-toggle="validator" role="form" autocomplete="off" action="submit_task.php" method="post">
 					  <div class="form-group col-sm-6">
-						  <label for="task_type" class="control-label">Task Type</label>
+						  <label for="name" class="control-label">Task Name</label>
+						  <input name="name" type="text" class="form-control" id="name" placeholder="" required>
+					  </div>
+					  
+					  <div class="form-group col-sm-6">
+						  <label for="task_type" class="control-label">Task Type</label><br>
 						  
 							<?php
 								$result = $db ->query("SELECT * FROM `task_type`");
@@ -62,38 +67,60 @@ else{
 								echo $option1;
 							?>
 						  
-					  </div>
+					  </div><br><br><br><br>
 					  <div class="form-group col-sm-6">
-						  <label for="project" class="control-label">Project</label>
+						  <label for="project" class="control-label">Project</label><br>
 						  
 							<?php
-								if($result2 = $db ->query("SELECT project_id, desc FROM `project`")){
+								if($result2 = $db ->query("SELECT project_id, name FROM `project`")){
 								
 									$option2.="<select name='project'>";
 									while($obj2 = $result2->fetch_object()){
 										
-									   $option2.="<option value=" . $obj2->project_id . ">" . $obj2->desc . "</option> ";
+									   $option2.="<option value=" . $obj2->project_id . ">" . $obj2->name . "</option> ";
 									}
 									$option2.="</select>"; 
 									echo $option2;
 								}
 								else
-									echo "error";
+									echo "project error";
 							?>
 						  
-					  </div><br>
+					  </div>
+					  
 					  <div class="form-group col-sm-6">
+						  <label for="milestone" class="control-label">Milestone</label><br>
+						  
+							<?php
+								if($result3 = $db ->query("SELECT * FROM `milestones`")){
+								
+									$option3.="<select name='milestone'>";
+									while($obj3 = $result3->fetch_object()){
+										
+									   $option3.="<option value=" . $obj3->m_id . ">" . $obj3->name . "</option> ";
+									}
+									$option3.="</select>"; 
+									echo $option3;
+								}
+								else
+									echo "milestone error";
+							?>
+						  
+					  </div><br><br>
+					  
+					  <div class="form-group col-sm-6" align="left">
 						  <label for="start_date" class="control-label">Start Date</label>
-						  <input name="start_date" type="text" class="form-control" id="start_date" placeholder="m/d/y" required>
+						  <input name="start_date" type="text" class="form-control" id="start_date" placeholder="yyyy-mm-dd" required>
 					  </div>
 					  <div class="form-group col-sm-6">
 						  <label for="end_date" class="control-label">End Date</label>
-						  <input name="end_date" type="text" class="form-control" id="end_date" placeholder="m/d/y" required>
+						  <input name="end_date" type="text" class="form-control" id="end_date" placeholder="yyyy-mm-dd" required>
 					  </div><br>
 					  <div class="form-group col-sm-12">
 						  <label for="description" class="control-label">Description</label>
-						  <textarea name="description" type="text" class="form-control" rows="3" placeholder="Description..." required></textarea>
+						  <textarea name="description" type="text" class="form-control" rows="3" placeholder="" required></textarea>
 					  </div><br>
+					  
 					  <div class="form-group" align= "right">
 						  <button type="submit" class="btn btn-primary">Submit</button>
 					  </div>
@@ -105,6 +132,8 @@ else{
 </div>	
 </div>
 </div>
+</div>
+
 	    <!-- End Page Content -->
 		
 </body>
