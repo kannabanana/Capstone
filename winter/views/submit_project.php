@@ -1,5 +1,5 @@
 <?php
-/* Submit a new project to the project table */
+/* Submit a new user to the Users database */
 
 // Connect to the database
 include("_header.php");
@@ -20,11 +20,7 @@ $end_date 			= mysql_real_escape_string($end_date);
 $desc 				= $_POST[description];
 $desc 	 			= mysql_real_escape_string($desc);
 
-$name				= $_POST[name];
-$name				= mysql_real_escape_string($name);
-
-//desc is an SQL keyword and must be surrounded by back ticks (also known as a grave accent)
-$project_table = "INSERT INTO project (project_type_id, grant_id, start_date, end_date, `desc`, name) VALUES ('$project_type_id','$grant_id', '$start_date', '$end_date', '$desc', '$name')";
+$project_table = "INSERT INTO project (project_type_id, grant_id, start_date, end_date, desc) VALUES ('$project_type_id','$grant_id', '$start_date', '$end_date', '$desc')";
 
 // Send query
 if (mysqli_query($db, $project_table)) {

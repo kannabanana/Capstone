@@ -17,26 +17,19 @@ $start_date 		= mysql_real_escape_string($start_date);
 $end_date 			= $_POST[end_date];
 $end_date 			= mysql_real_escape_string($end_date);
 
-$desc				= $_POST[description];
-$desc				= mysql_real_escape_string($desc);
+$summary			= $_POST[description];
+$summary	 		= mysql_real_escape_string($desc);
 
-$name				= $_POST[name];
-$name				= mysql_real_escape_string($name);
-
-$m_id				= $_POST[milestone];
-$m_id				= mysql_real_escape_string($m_id);
-
-//desc is an SQL keyword and must be surrounded by back ticks (also known as a grave accent)
-$task_table = "INSERT INTO task ( name, start_date, end_date, `desc`, project_id, m_id, task_type_id ) VALUES ('$name', '$start_date', '$end_date', '$desc', '$project_id', '$m_id', '$task_type_id')";
+$task_table = "INSERT INTO task ( start_date, end_date, summary, project_id, task_type_id ) VALUES ('$start_date', '$end_date', '$summary', '$project_id', '$task_type_id')";
 
 // Send query
-if (mysqli_query($db, $task_table)) {
+if (mysqli_query($db, $project_table)) {
     // Redirect to login page after successful registration
 	$_SESSION['success_reg'] = 1;
 	header("Location: task_page.php");
 } 
 else {
-    echo "Error: " . $task_table . "<br>" . mysqli_error($db);
+    echo "Error: " . $project_table . "<br>" . mysqli_error($db);
 }
 
 ?>
