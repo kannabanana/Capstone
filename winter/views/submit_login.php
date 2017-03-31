@@ -5,7 +5,11 @@
 include("_header.php");
 // Declare variables
 $user_name        = $_POST[user_name];
+$user_name = filter_var($user_name,FILTER_SANITIZE_STRING);
+
 $password        = $_POST[password];
+$password = filter_var($password,FILTER_SANITIZE_STRING);
+
 $hashed_password = base64_encode(hash('sha256', $password));
 $clamped_pass	= substr($hashed_password, 0, 40);
 // Clean username input
