@@ -31,9 +31,7 @@ if ($query = $db->query($sql)) {
     // Create session variable
     $_SESSION['uid'] = $user_row->user_id;
     // Redirect to user homepage
-	echo "in submit_login";
-	echo $_SESSION['uid'];
-	header("Location: profile.php");
+	header('Location: profile.php');
 	exit();
 }else {
     echo "Error: " . $sql . "<br>" . mysqli_error($db);

@@ -1,5 +1,4 @@
 <?php 
-	echo "1. profile.php"
           include("_header.php"); 
 	  include("_sidebar_header.php");
 
@@ -20,10 +19,8 @@
 <body>
 <?php
 echo "2. in profile.php";
-echo $_SESSION['uid'];
-if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
-echo $_SESSION['uid'];
-$id = $_SESSION["uid"];
+if(isset($_SESSION['uid']) && !empty($_SESSION['uid'])){
+$id = $_SESSION['uid'];
 
 }
 else{
