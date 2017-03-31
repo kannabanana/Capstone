@@ -18,7 +18,6 @@
 
 <body>
 <?php
-echo "2. in profile.php";
 if(isset($_SESSION['uid']) && !empty($_SESSION['uid'])){
 $id = $_SESSION['uid'];
 

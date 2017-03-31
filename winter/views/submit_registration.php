@@ -11,6 +11,17 @@ $first = $_POST[first];
 $last = $_POST[last];
 $phone = $_POST[phone];
 $email = $_POST[email];
+
+$email = filter_var($email,FILTER_SANITIZE_EMAIL);
+if (!filter_var($email,FILTER_SANITIZE_EMAIL)==false)
+{
+	echo("$email is a valid email address");
+}
+else{
+	echo("$email is not a valid email address");
+	header("Landing: index.php");
+}
+
 $major = $_POST[major];
 $hire = date("Y-m-d", strtotime($_POST[hire]));
 $hours = $_POST[hours];

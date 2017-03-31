@@ -27,7 +27,6 @@ if ($query = $db->query($sql)) {
     if (empty($user_row)) {
         die ('Invalid Username or Password');
     }
-
     // Create session variable
     $_SESSION['uid'] = $user_row->user_id;
     // Redirect to user homepage
