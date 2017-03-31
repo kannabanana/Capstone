@@ -1,5 +1,9 @@
-<?php include("_header.php"); 
-	  include("_sidebar_header.php");?>
+<?php 
+	echo "1. profile.php"
+          include("_header.php"); 
+	  include("_sidebar_header.php");
+
+?>
 <!doctype html>
 
 <html>
@@ -14,8 +18,11 @@
 </head>
 
 <body>
-<?php 
+<?php
+echo "2. in profile.php";
+echo $_SESSION['uid'];
 if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
+echo $_SESSION['uid'];
 $id = $_SESSION["uid"];
 
 }

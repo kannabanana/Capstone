@@ -3,7 +3,6 @@
 
 // Connect to database
 include("_header.php");
-
 // Declare variables
 $user_name        = $_POST[user_name];
 $password        = $_POST[password];
@@ -29,9 +28,11 @@ if ($query = $db->query($sql)) {
         die ('Invalid Username or Password');
     }
 
-    // Create session variables
+    // Create session variable
     $_SESSION['uid'] = $user_row->user_id;
     // Redirect to user homepage
+	echo "in submit_login";
+	echo $_SESSION['uid'];
 	header("Location: profile.php");
 	exit();
 }else {
