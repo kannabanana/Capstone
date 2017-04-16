@@ -38,6 +38,9 @@
 				<li>
                     <a href="assignments.php">Assign Hours</a>
                 </li>
+				<li>
+                    <a href="log_hours.php">Log Hours to Task</a>
+                </li>
                 <li>
                     <a href="create_task.php">Create Task</a>
                 </li>
