@@ -3,10 +3,13 @@
 
 // Connect to database
 include("_header.php");
-
 // Declare variables
 $user_name        = $_POST[user_name];
+$user_name = filter_var($user_name,FILTER_SANITIZE_STRING);
+
 $password        = $_POST[password];
+$password = filter_var($password,FILTER_SANITIZE_STRING);
+
 $hashed_password = base64_encode(hash('sha256', $password));
 $clamped_pass	= substr($hashed_password, 0, 40);
 // Clean username input
@@ -28,11 +31,10 @@ if ($query = $db->query($sql)) {
     if (empty($user_row)) {
         die ('Invalid Username or Password');
     }
-
-    // Create session variables
+    // Create session variable
     $_SESSION['uid'] = $user_row->user_id;
     // Redirect to user homepage
-	header("Location: profile.php");
+	header('Location: profile.php');
 	exit();
 }else {
     echo "Error: " . $sql . "<br>" . mysqli_error($db);
