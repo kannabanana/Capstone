@@ -20,6 +20,7 @@
 if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
 	if(isset($_GET["p"]) && !empty($_GET["p"])){
 		$id = $_GET["p"];
+		$_SESSION["pid"] = $id;
 		
 	}
 	else
@@ -91,6 +92,13 @@ exit();
 	setScaleConfig('4');
 
 	gantt.config.xml_date = "%Y-%m-%d %H:%i";
+
+	gantt.config.columns=[
+    	{name:"text",       label:"Task name",  tree:true, width:'*' },
+    	{name:"start_date", label:"Start time", align: "center" },
+    	{name:"duration",   label:"Duration",   align: "center" }
+    	//{name:"add",        label:"" }
+	];
 
 	gantt.init("gantt_here");	
 	gantt.load('data.php');//loads data to Gantt from the database

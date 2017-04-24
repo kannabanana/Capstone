@@ -23,17 +23,41 @@ $desc 	 			= mysql_real_escape_string($desc);
 $name				= $_POST[name];
 $name				= mysql_real_escape_string($name);
 
+
+if($duration = $db ->query("SELECT DATEDIFF('$end_date', '$start_date') AS duration")){
+	//returns the integer as a column called duration defined in the query above
+	$obj1 = $duration->fetch_object();
+	$duration = $obj1->duration;
+}
+else{
+	echo "failed to calculate duration";
+}
+
 //desc is an SQL keyword and must be surrounded by back ticks (also known as a grave accent)
 $project_table = "INSERT INTO project (project_type_id, grant_id, start_date, end_date, `desc`, name) VALUES ('$project_type_id','$grant_id', '$start_date', '$end_date', '$desc', '$name')";
 
-// Send query
+//query to insert the task into the gantt_tasks table
+
+
+// Send project query
 if (mysqli_query($db, $project_table)) {
-    // Redirect to login page after successful registration
-	$_SESSION['success_reg'] = 1;
-	header("Location: projects.php");
+	//project_id must be grabbed after project has been inserted into the table
+	$project_id = mysqli_insert_id($db);
+	//query to insert the task into the gantt_tasks table
+	$gantt_tasks = "INSERT INTO gantt_tasks ( text, start_date, duration, parent, project_id ) VALUES ('$desc', '$start_date', '$duration', '0', '$project_id')";
 } 
 else {
     echo "Error: " . $project_table . "<br>" . mysqli_error($db);
+}
+
+
+//Send gant_tasks query
+if (mysqli_query($db, $gantt_tasks)) {
+	// Redirect to tasks page after successful insertion
+	header("Location: projects.php");
+}
+else {
+	echo "Error: " . $gantt_tasks . "<br>" . mysqli_error($db);
 }
 
 ?>
