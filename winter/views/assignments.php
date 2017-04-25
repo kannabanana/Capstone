@@ -1,10 +1,15 @@
+<!--
+ASSIGNMENTS.PHP
+--!>
+
+
 <!DOCTYPE html>
-<?php include("_header.php"); 
+<?php include("_header.php"); 				//imports header and side bar
 include("_sidebar_header.php");?>
 <html lang="en">
 
-<head>
 
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
@@ -14,19 +19,20 @@ include("_sidebar_header.php");?>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="../css/style.css" type="text/css">
+	<link rel="stylesheet" href="../css/style.css" type="text/css">					<!--css--!>
 
     <title>Create Task</title>
-
-
 </head>
+
+
+
 
 <body>
         <!-- Start Page Content -->
 
 <?php 
-if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
-	if(isset($_SESSION['success_reg']) && !empty($_SESSION['success_reg'])){
+if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){						//check the sesion id for the username
+	if(isset($_SESSION['success_reg']) && !empty($_SESSION['success_reg'])){			//they're already signed in
 			if($_SESSION['success_reg'] === 1){
 				echo '<span style="color:#AFA;text-align:left;">Successful Registration</span>';
 			}else{
@@ -34,7 +40,7 @@ if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
 			unset($_SESSION['success_reg']);}
 }
 else{
-	echo "Please sign in to access this page";
+	echo "Please sign in to access this page";							//they're not signed in
 	sleep(1);
 	header("Location: landing.php");
 	exit();
@@ -48,16 +54,16 @@ else{
 		  <br>
 		  <div class="panel panel-info">
 		  <div class="panel-heading">
-              <h3 class="panel-title">Assign Employees</h3>
+              <h3 class="panel-title">Assign Employees</h3>					<!-- assign employee hours !-->
             </div>
 			<div class="panel-body">
 		  <div class="container-fluid" >
-				  <form data-toggle="validator" role="form" autocomplete="off" action="submit_assignments.php" method="post">
+				  <form data-toggle="validator" role="form" autocomplete="off" action="submit_assignments.php" method="post">		
 					  <div class="form-group col-sm-6">
 						  <label for="task_type" class="control-label">Task Name</label><br>
 						  
 							<?php
-								$result = $db ->query("SELECT * FROM `task`");
+								$result = $db ->query("SELECT * FROM `task`");			//select the task
 								$option1.="<select name='task_name'>";
 								while($obj = $result->fetch_object()){
 									
