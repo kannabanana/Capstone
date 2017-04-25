@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php include("_header.php"); 
-include("_sidebar_header.php");?>
+include("_sidebar_header.php");?>			<!--have header and side bar--!>
 <html lang="en">
 
 <head>
@@ -25,13 +25,13 @@ include("_sidebar_header.php");?>
         <!-- Start Page Content -->
 
 <?php 
-if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
+if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){				//check for session id
 	$id = $_SESSION["uid"];
 }
 else{
 	echo "Please sign in to access this page";
 	sleep(1);
-	header("Location: landing.php");
+	header("Location: landing.php");						//redirect otherwise
 	exit();
 }
 ?>
@@ -43,7 +43,7 @@ else{
 		  <br>
 		  <div class="panel panel-info">
 		  <div class="panel-heading">
-              <h3 class="panel-title">Create Project</h3>
+              <h3 class="panel-title">Create Project</h3>				<!--create a project by selecting name, and grant type --!>
             </div>
 			<div class="panel-body">
 		  <div class="container-fluid" >
@@ -55,7 +55,7 @@ else{
 					  <div class="form-group col-sm-6">
 						  <label for="project_type" class="control-label">Project Type</label><br>
 						  
-							<?php
+							<?php	//checking against project type
 								$result = $db ->query("SELECT * FROM `project_type`");
 								$option1.="<select name='project_type'>";
 								while($obj = $result->fetch_object()){
@@ -70,7 +70,7 @@ else{
 					  <div class="form-group col-sm-6">
 						  <label for="grant_type" class="control-label">Grant Type</label><br>
 						  
-							<?php
+							<?php		//choose grant by searching DB
 								if($result2 = $db ->query("SELECT * FROM `grant`")){
 								
 									$option2.="<select name='grant_type'>";

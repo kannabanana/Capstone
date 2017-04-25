@@ -10,11 +10,11 @@
 	  <?php 
 	  if($result = $db->query("select * from employee_information")){
 		while($obj = $result->fetch_object()){
-			$last = htmlspecialchars($obj->last_name);
+			$last = htmlspecialchars($obj->last_name);			//check for first and last name from DB
 			$first = htmlspecialchars($obj->first_name);
 			$fixedLast = $last;
 			$fixedFirst = $first;
-			for($i = 0; $i < strlen($last); $i++){
+			for($i = 0; $i < strlen($last); $i++){				//check for a substring that's most similar
 				if($last[$i] === "'")
 					$fixedLast = substr($last, 0, $i) . "\\".  substr($last, $i, strlen($last) - $i);
 			}
@@ -23,14 +23,14 @@
 					$fixedFirst = substr($first, 0, $i) . "\\".  substr($first, $i, strlen($first) - $i);
 			}		
 ?>
-	lastTags.push('<?php echo $fixedLast;?>');
+	lastTags.push('<?php echo $fixedLast;?>');		//push forward the suggestion
 	firstTags.push('<?php echo $fixedFirst;?>');
 	<?php 
 		}
 		$result->close();
 	}
 	?>
-    $( "#first" ).autocomplete({
+    $( "#first" ).autocomplete({				//autocomplete the suggestion based on their input
       source: firstTags
     });
 	$( "#last" ).autocomplete({

@@ -75,7 +75,7 @@ else{
 						  
 					  </div>
 					  <div class="form-group col-sm-6">
-						  <label for="hours" class="control-label">Hours</label>
+						  <label for="hours" class="control-label">Hours</label>				<!--choose hours, first name and last name of employee --!>
 						  <input name="hours" type="text" class="form-control" id="hours" placeholder="hours" required>
 					  </div>
 					  <div class="form-group col-sm-6">
