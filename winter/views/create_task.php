@@ -1,3 +1,6 @@
+<!--CREATE TASKS--!>
+
+
 <!DOCTYPE html>
 <?php include("_header.php"); 
 include("_sidebar_header.php");?>
@@ -24,7 +27,7 @@ include("_sidebar_header.php");?>
 <body>
         <!-- Start Page Content -->
 
-<?php 
+<?php 				//check if we have session id, redirect to landing if we don't
 if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
 	$id = $_SESSION["uid"];
 }
@@ -36,6 +39,9 @@ else{
 }
 ?>
 
+
+
+
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
 <div class="container" >
   <div class="row">
@@ -46,7 +52,7 @@ else{
               <h3 class="panel-title">Create Task</h3>
             </div>
 			<div class="panel-body">
-		  <div class="container-fluid" >
+		  <div class="container-fluid" >				<!--Check for a given task and identify it's id--!>
 				  <form data-toggle="validator" role="form" autocomplete="off" action="submit_task.php" method="post">
 					  <div class="form-group col-sm-6">
 						  <label for="name" class="control-label">Task Name</label>
@@ -71,7 +77,7 @@ else{
 					  <div class="form-group col-sm-6">
 						  <label for="project" class="control-label">Project</label><br>
 						  
-							<?php
+							<?php		//get the project id
 								if($result2 = $db ->query("SELECT project_id, name FROM `project`")){
 								
 									$option2.="<select name='project'>";
@@ -91,7 +97,7 @@ else{
 					  <div class="form-group col-sm-6">
 						  <label for="milestone" class="control-label">Milestone</label><br>
 						  
-							<?php
+							<?php			//check if it's part of a milestone and display 
 								if($result3 = $db ->query("SELECT * FROM `milestones`")){
 								
 									$option3.="<select name='milestone'>";
@@ -108,6 +114,9 @@ else{
 						  
 					  </div><br><br>
 					  
+
+
+					<!--display start, end, description--!>
 					  <div class="form-group col-sm-6" align="left">
 						  <label for="start_date" class="control-label">Start Date</label>
 						  <input name="start_date" type="text" class="form-control" id="start_date" placeholder="yyyy-mm-dd" required>
