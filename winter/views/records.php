@@ -10,6 +10,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="../css/style.css" type="text/css">
 	<script type="text/javascript" src="../js/script.js"></script>
+	
 	<title> Records </title>
 </head>
 
@@ -35,6 +36,15 @@ exit();
             <div class="panel-heading">
               <h3 class="panel-title">Employee Records </h3>
             </div>
+			<div class="ui-widget">
+  <label for="first">First: </label>
+  <input id="first">
+</div>
+
+<div class="ui-widget">
+  <label for="last">Last: </label>
+  <input id="last">
+</div>
             <div class="panel-body">
               <div class="row">     
                 <div class=" col-md-9 col-lg-9 "> 
@@ -78,6 +88,7 @@ exit();
     </div>
 				  <?php 
 				  include("_sidebar_footer.php"); 
+				  include("_autocomplete_footer.php");
 				  $results->close();?>
 </body>	
 </html>
