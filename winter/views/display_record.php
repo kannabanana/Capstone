@@ -1,3 +1,5 @@
+<!--inserting information for the header and sidebar --!>
+
 <?php include("_header.php"); 
 	  include("_sidebar_header.php");?>
 <!doctype html>
@@ -14,22 +16,23 @@
 </head>
 
 <body>
-<?php 
+
+<?php 				//check the user id is present
 if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
 	if(isset($_GET["u"]) && !empty($_GET["u"])){
 		$id = $_GET["u"];
 		
 	}
 	else
-		echo "No user selected from employee records page.";
+		echo "No user selected from employee records page.";				//display error if the user is not displaying user details
 }
 else{
 echo "Please sign in to access this page";
 sleep(1);
-header("Location: landing.php");
+header("Location: landing.php");								//redirect to landing
 exit();
 }
-if($result = $db->query("select * from employee_information where user_id = '$id'")){
+if($result = $db->query("select * from employee_information where user_id = '$id'")){		//get all employee related information based on given user-id	
 		while($obj = $result->fetch_object()){
 			$first = htmlspecialchars($obj->first_name);
 			$last = htmlspecialchars($obj->last_name);
@@ -45,6 +48,8 @@ if($result = $db->query("select * from employee_information where user_id = '$id
 		}
 		$result->close();
 } ?>
+
+<!--DISPLAY ALL INFORMATION LEARNED FROM DB--!>
 <div class="container">
       <div class="row">
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
@@ -58,13 +63,13 @@ if($result = $db->query("select * from employee_information where user_id = '$id
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title"><?php echo $first; ?> <?php echo $last;?> </h3>
+              <h3 class="panel-title"><?php echo $first; ?> <?php echo $last;?> </h3>				<!--display first and last name--!>
             </div>
             <div class="panel-body">
               <div class="row">     
 			  <?php if(isset($image_data) && !empty($image_data)){?>
 				<div class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="data:image/jpeg;base64,<?php echo base64_encode( $image_data ); ?>" class="img-circle img-responsive" /> </div>
-			  <?php }?>
+			  <?php }?>										<!--display their employee image--!>
                 <div class=" col-md-8 col-lg-8 "> 
                   <table class="table table-user-information">
                     <tbody>
