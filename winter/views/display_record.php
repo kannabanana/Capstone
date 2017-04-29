@@ -33,7 +33,7 @@ header("Location: landing.php");								//redirect to landing
 exit();
 }
 if($result = $db->query("select * from employee_information where user_id = '$id'")){		//get all employee related information based on given user-id	
-		while($obj = $result->fetch_object()){
+		while($obj = $result->fetch_object()){						//firstname, lastname, phonenumer,email,major,current etc.
 			$first = htmlspecialchars($obj->first_name);
 			$last = htmlspecialchars($obj->last_name);
 			$user = htmlspecialchars($obj->user_name);
@@ -126,7 +126,7 @@ if($result = $db->query("select * from employee_information where user_id = '$id
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">Assigned Tasks </h3>
+              <h3 class="panel-title">Assigned Tasks </h3>			<!--display an employees assigned tasks--!>
             </div>
             <div class="panel-body">
               <div class="row">     
@@ -134,14 +134,14 @@ if($result = $db->query("select * from employee_information where user_id = '$id
                   <table class="table">
 				  <thead class="thead-inverse">
 					<tr>
-					  <th>Task Type</th>
+					  <th>Task Type</th>			<!--the things which will displayed in the table include task type, name, hours logged and assigned hours --!>
 					  <th>Task Name</th>
 					  <th>Logged Hours</th>
 					  <th>Assigned Hours</th>
 					</tr>
 				  </thead>
 				 <tbody>
-				  <?php if($result = $db->query("select * from assignments WHERE user_id = '$id' ORDER BY assignment_id desc ")){
+				  <?php if($result = $db->query("select * from assignments WHERE user_id = '$id' ORDER BY assignment_id desc ")){	//query the database to poppulate the table based on the user id from the assignments table
 							while($obj = $result->fetch_object()){ 
 								$task_id = htmlspecialchars($obj->task_id);
 								$assigned_hours = htmlspecialchars($obj->hours);
@@ -167,7 +167,7 @@ if($result = $db->query("select * from employee_information where user_id = '$id
 									
 									
 								}
-								$last = htmlspecialchars($obj->last_name);
+								$last = htmlspecialchars($obj->last_name);		//display their last name and task id, and logged hours
 								$url = "display_task.php?t=" . htmlspecialchars($obj->task_id);
 								if(!isset($logged_hours) || empty($logged_hours)){
 									$logged_hours = 0;

@@ -1,5 +1,7 @@
 <?php include("_header.php"); 
-	  include("_sidebar_header.php");?>
+	  include("_sidebar_header.php");
+	//header and side bar to include db and navigation
+?>		
 <!doctype html>
 
 <html>
@@ -10,12 +12,12 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="../css/style.css" type="text/css">
 	<script type="text/javascript" src="../js/script.js"></script>	
-	<title> Profile </title>
+	<title> Tasks </title>
 </head>
 
 <body>
 <?php 
-if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
+if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){			//get session id
 	if(isset($_GET["t"]) && !empty($_GET["t"])){
 		$id = $_GET["t"];
 		
@@ -26,13 +28,13 @@ if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
 else{
 echo "Please sign in to access this page";
 sleep(1);
-header("Location: landing.php");
+header("Location: landing.php");						//redirecting to landing page if there is no session id
 exit();
 }
-if($result = $db->query("select * from task where task_id = '$id'")){
+if($result = $db->query("select * from task where task_id = '$id'")){				//get all the task related information for a given task id from the task table
 		while($obj = $result->fetch_object()){
 			$name = htmlspecialchars($obj->name);
-			$start_date = htmlspecialchars($obj->start_date);
+			$start_date = htmlspecialchars($obj->start_date);			//* means start date, end date, desc, project_id, id, task type etc.
 			$end_date = htmlspecialchars($obj->end_date);
 			$desc = htmlspecialchars($obj->desc);
 			$project_id = htmlspecialchars($obj->project_id);
@@ -61,7 +63,7 @@ if($result = $db->query("select * from task where task_id = '$id'")){
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
            <!--<A href="edit.html" >Edit Profile</A> -->    
 
-        <A href="tasks.php" >Back to tasks Page</A>
+        <A href="tasks.php" >Back to tasks Page</A>					<!--display the tasks--!>
        <br>
       </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
@@ -78,7 +80,7 @@ if($result = $db->query("select * from task where task_id = '$id'")){
                     <tbody>
                       <tr>
                         <td>Start Date:</td>
-                        <td><?php echo $start_date;  ?></td>
+                        <td><?php echo $start_date;  ?></td>			<!--echo the php variables queried from above-->
                       </tr>  
 					  <tr>
                         <td>End Date:</td>

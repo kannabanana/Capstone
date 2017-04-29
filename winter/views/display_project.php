@@ -1,4 +1,6 @@
-<?php include("_header.php"); 
+<!--GANNT CHART CODE - AVAILABLE ONLINE AND CONFIGURED TO EEC NEEDS--!>
+
+<?php include("_header.php"); 								//header and side bar
 	  include("_sidebar_header.php");?>
 <!doctype html>
 
@@ -17,10 +19,10 @@
 
 <body>
 <?php 
-if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
+if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){				//checking if the user_id is available, otherwise redirect to landing page
 	if(isset($_GET["p"]) && !empty($_GET["p"])){
 		$id = $_GET["p"];
-		$_SESSION["pid"] = $id;
+		$_SESSION["pid"] = $id;							//store their id
 		
 	}
 	else
@@ -29,10 +31,13 @@ if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
 else{
 echo "Please sign in to access this page";
 sleep(1);
-header("Location: landing.php");
+header("Location: landing.php");							//redirecting
 exit();
 }
 ?>
+
+
+	<!--these are the options for viewing: day, week month, year--!>
 
     <input type="radio" id="scale1" name="scale" value="1" checked /><label for="scale1">Day scale</label>
     <input type="radio" id="scale2" name="scale" value="2" /><label for="scale2">Week scale</label>
@@ -45,7 +50,7 @@ exit();
 	function setScaleConfig(value){
 		switch (value) {
 			case "1":
-				gantt.config.scale_unit = "day";
+				gantt.config.scale_unit = "day";				//for day view set up the configurations		
 				gantt.config.step = 1;
 				gantt.config.date_scale = "%d";
 				gantt.config.subscales = [
@@ -55,13 +60,13 @@ exit();
 				gantt.templates.date_scale = null;
 				break;
 			case "2":
-				var weekScaleTemplate = function(date){
+				var weekScaleTemplate = function(date){			
 					var dateToStr = gantt.date.date_to_str("%d");
 					var endDate = gantt.date.add(gantt.date.add(date, 1, "week"), -1, "day");
 					return dateToStr(date) + " - " + dateToStr(endDate);
 				};
 
-				gantt.config.scale_unit = "week";
+				gantt.config.scale_unit = "week";				//for week options set up configurations
 				gantt.config.step = 1;
 				gantt.config.subscales = [
 					{unit:"month", step:1, date:"%M" }
@@ -70,7 +75,7 @@ exit();
 				gantt.config.scale_height = 50;
 				break;
 			case "3":
-				gantt.config.scale_unit = "month";
+				gantt.config.scale_unit = "month";				//for month option set up configurations
 				//gantt.config.step = 1;
 				gantt.config.date_scale = "%F '%y";
 				gantt.config.scale_height = 25;
@@ -78,7 +83,7 @@ exit();
 				gantt.templates.date_scale = null;
 				break;
 			case "4":
-				gantt.config.scale_unit = "year";
+				gantt.config.scale_unit = "year";				//for year option set configurations
 				gantt.config.step = 1;
 				gantt.config.date_scale = "%Y";
 				gantt.config.min_column_width = 50;
@@ -93,7 +98,7 @@ exit();
 
 	gantt.config.xml_date = "%Y-%m-%d %H:%i";
 
-	gantt.config.columns=[
+	gantt.config.columns=[									//configuring the column view as taskname, startdate, end date, duration etc.
     	{name:"text",       label:"Task name",  tree:true, width:'*' },
     	{name:"start_date", label:"Start time", align: "center" },
     	{name:"duration",   label:"Duration",   align: "center" }
@@ -101,7 +106,7 @@ exit();
 	];
 
 	gantt.init("gantt_here");	
-	gantt.load('data.php');//loads data to Gantt from the database
+	gantt.load('data.php');									//loads data to Gantt from the database
 
 	var dp=new gantt.dataProcessor("data.php");  
 	dp.init(gantt);
@@ -141,13 +146,13 @@ exit();
 					</tr>
 				  </thead>
 				 <tbody>
-				  <?php if($result = $db->query("select * from task where project_id = '$id'")){
+				  <?php if($result = $db->query("select * from task where project_id = '$id'")){			//query the task information to load to gannt chart
 							while($obj = $result->fetch_object()){ 
 								$task_type_id = htmlspecialchars($obj->task_type_id);
 								$task_name = htmlspecialchars($obj->name);
-								$url = "display_task.php?t=" . htmlspecialchars($obj->task_id);
+								$url = "display_task.php?t=" . htmlspecialchars($obj->task_id);		//given a task id
 								if($result2 = $db->query("select * from task_type WHERE task_type_id = '$task_type_id'")){
-									while($obj2 = $result2->fetch_object()){ 
+									while($obj2 = $result2->fetch_object()){ 			//display all the tasks for a given task type for a given task id
 										$task_type_name = htmlspecialchars($obj2->name);
 									}
 								}
