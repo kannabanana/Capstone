@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php include("_header.php"); 
-include("_sidebar_header.php");?>
+include("_sidebar_header.php");
+//include header for database and side bar for navigation
+?>
 <html lang="en">
 
 <head>
@@ -25,13 +27,13 @@ include("_sidebar_header.php");?>
         <!-- Start Page Content -->
 
 <?php 
-if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
+if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){			//check if they have session id otherwise redirecto to landing.php
 	$id = $_SESSION["uid"];
 }
 else{
 	echo "Please sign in to access this page";
 	sleep(1);
-	header("Location: landing.php");
+	header("Location: landing.php");					//redirecting to landing page
 	exit();
 }
 ?>
@@ -42,10 +44,11 @@ else{
 		  <br>
 		  <div class="panel panel-info">
 		  <div class="panel-heading">
-              <h3 class="panel-title">Input Hours</h3>
+              <h3 class="panel-title">Input Hours</h3>				<!--from to input number of hours-->
             </div>
 			<div class="panel-body">
 		  <div class="container-fluid" >
+			<!--form for input for number of hours by asking for task id, hours, descirption, submit--!>
 				  <form data-toggle="validator" role="form" autocomplete="off" action="submit_hours.php" method="post">
 					  <div class="form-group col-sm-6">
 						  <label for="task_id" class="control-label">Task ID</label>
@@ -60,7 +63,7 @@ else{
 						  <textarea name="description" type="text" class="form-control" rows="3" placeholder="" required>
 					  </div><br>
 					  <div class="form-group" align= "right">
-						  <button type="submit" class="btn btn-primary">Submit</button>
+						  <button type="submit" class="btn btn-primary">Submit</button>			<!--record task id, hours and description -->
 					  </div>
 			  </form>
 		  </div>

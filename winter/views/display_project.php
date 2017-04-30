@@ -1,4 +1,6 @@
 <!--GANNT CHART CODE - AVAILABLE ONLINE AND CONFIGURED TO EEC NEEDS--!>
+<!--THIS DISPLAYS ALL THE PROJECTS ON GANNT WHEREAS DISPLAY_PROJECT DISPLAYS A SPECIFIC PROJECT-->
+
 
 <?php include("_header.php"); 								//header and side bar
 	  include("_sidebar_header.php");?>

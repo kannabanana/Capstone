@@ -1,3 +1,4 @@
+<!--header and sidebar information so we can access database and navigation bar-->
 <!DOCTYPE html>
 <?php include("_header.php"); 
 include("_sidebar_header.php");?>
@@ -17,7 +18,7 @@ include("_sidebar_header.php");?>
 	<link rel="stylesheet" href="../css/style.css" type="text/css">
 
     <title>Log Hours</title>
-
+	<!--this is the logging hours page-->
 
 </head>
 
@@ -25,8 +26,8 @@ include("_sidebar_header.php");?>
         <!-- Start Page Content -->
 
 <?php 
-if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
-	if(isset($_SESSION['success_reg']) && !empty($_SESSION['success_reg'])){
+if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){			//check if the user id is available
+	if(isset($_SESSION['success_reg']) && !empty($_SESSION['success_reg'])){		//see if registration was sucessful
 			if($_SESSION['success_reg'] === 1){
 				echo '<span style="color:#AFA;text-align:left;">Successful Registration</span>';
 			}elseif($_SESSION['success_reg'] === 2){
@@ -39,7 +40,7 @@ if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
 else{
 	echo "Please sign in to access this page";
 	sleep(1);
-	header("Location: landing.php");
+	header("Location: landing.php");		//if they're not signed in, redirect them to landing page
 	exit();
 }
 ?>
@@ -51,7 +52,7 @@ else{
 		  <br>
 		  <div class="panel panel-info">
 		  <div class="panel-heading">
-              <h3 class="panel-title">Log Hours to Task</h3>
+              <h3 class="panel-title">Log Hours to Task</h3>			<!--display the log task hours-->
             </div>
 			<div class="panel-body">
 		  <div class="container-fluid" >
@@ -59,7 +60,7 @@ else{
 					  <div class="form-group col-sm-6">
 						  <label for="task_type" class="control-label">Task Name</label><br>
 						  
-							<?php
+							<?php			//query all the information for a given task
 								$result = $db ->query("SELECT * FROM `task`");
 								$option1.="<select name='task_name'>";
 								while($obj = $result->fetch_object()){
@@ -70,6 +71,8 @@ else{
 								echo $option1;
 							?>
 						  
+					<!--form for submitting log hours-->
+					<!--hours such as hours, description, date must all be recorded-->
 					  </div>
 					  <div class="form-group col-sm-6">
 						  <label for="hours" class="control-label">Hours</label>
@@ -83,14 +86,6 @@ else{
 						  <label for="date" class="control-label">Date Worked</label>
 						  <input name="date" type="text" class="form-control" id="date" placeholder="yyyy-mm-dd" required>
 					  </div>
-					  <!--<div class="form-group col-sm-6">
-						  <label for="first" class="control-label">First Name</label>
-						  <input name="first" type="text" class="form-control" id="first" placeholder="First" required>
-					  </div>
-						  <div class="form-group col-sm-6" >
-							  <label for="last" class="control-label" >Last Name</label>
-							  <input name="last" type="text" class="form-control" id="last" placeholder="Lirst" required><br>
-						  </div> -->
 					  
 					  <div class="form-group" align= "right">
 						  <button type="submit" class="btn btn-primary">Submit</button>
