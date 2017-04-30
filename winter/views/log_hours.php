@@ -29,6 +29,9 @@ if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
 	if(isset($_SESSION['success_reg']) && !empty($_SESSION['success_reg'])){
 			if($_SESSION['success_reg'] === 1){
 				echo '<span style="color:#AFA;text-align:left;">Successful Registration</span>';
+			}elseif($_SESSION['success_reg'] === 2){
+				echo '<div class="alert alert-warning" role="alert"> <strong>Warning!</strong> You have logged more hours than assigned on that last task. Contact a manager.  </div>';
+				echo '<span style="color:#AFA;text-align:left;">Successful Registration</span>';
 			}else{
 			echo '<span style="color:#E60;text-align:center;">Unsuccessful Registration, username already taken.</span>';}
 			unset($_SESSION['success_reg']);}

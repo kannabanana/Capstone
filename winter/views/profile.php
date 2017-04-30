@@ -133,10 +133,29 @@ if($result = $db->query("select * from employee_information where user_id = '$id
 					</tr>
 				  </thead>
 				 <tbody>
-				  <?php if($result = $db->query("select * from assignments WHERE user_id = '$id' ORDER BY assignment_id desc ")){
+				  <?php $previous_id = -1;
+						if($result = $db->query("select * from assignments WHERE user_id = '$id' ORDER BY task_id desc ")){
 							while($obj = $result->fetch_object()){ 
 								$task_id = htmlspecialchars($obj->task_id);
-								$assigned_hours = htmlspecialchars($obj->hours);
+								if($previous_id === $task_id){
+									$assigned_hours = $assigned_hours + htmlspecialchars($obj->hours);
+									$previous_id = $task_id;
+									continue;
+								}elseif($previous_id === -1){
+									$logged_hours = 0;
+									$previous_id = $task_id;
+									$assigned_hours = htmlspecialchars($obj->hours);
+								}else{?>
+									<tr>
+									  <th scope="row"><a href="<?php echo $url; ?>" style="display : block; color:black" ><?php echo $task_type_name; ?></a></th>
+									  <td><a href="<?php echo $url; ?>" style="display : block; color:black"><?php echo $task_name; ?></a></td>
+									  <td><a href="<?php echo $url; ?>" style="display : block; color:<?php echo $color;?>"><?php echo $logged_hours; ?></a></td>
+									  <td><a href="<?php echo $url; ?>" style="display : block; color:<?php echo $color;?>"><?php echo $assigned_hours; ?></a></td>
+									</tr> <?php
+									$logged_hours = 0;
+									$previous_id = $task_id;
+									$assigned_hours = htmlspecialchars($obj->hours);
+								}
 								if($result2 = $db->query("select * from task where task_id = '$task_id'")){
 									while($obj2 = $result2->fetch_object()){ 
 										$task_name = $obj2->name;
@@ -154,25 +173,129 @@ if($result = $db->query("select * from employee_information where user_id = '$id
 									echo "Error Getting Task Information";
 								if($result4 = $db->query("select * from log_task where user_id = '$id' and task_id = '$task_id'")){
 									while($obj4 = $result4->fetch_object()){
-										$logged_hours = $obj4->hours;
-									}
-									
-									
+											$logged_hours = $logged_hours + $obj4->hours;
+									}						
 								}
-								$last = htmlspecialchars($obj->last_name);
 								$url = "display_task.php?t=" . htmlspecialchars($obj->task_id);
 								if(!isset($logged_hours) || empty($logged_hours)){
 									$logged_hours = 0;
 								}
-							?>
-				  
+								if($assigned_hours < $logged_hours)
+											$color = "red";
+										else
+											$color = "black";
+							}?>
+							<tr>
+									  <th scope="row"><a href="<?php echo $url; ?>" style="display : block; color:black" ><?php echo $task_type_name; ?></a></th>
+									  <td><a href="<?php echo $url; ?>" style="display : block; color:black"><?php echo $task_name; ?></a></td>
+									  <td><a href="<?php echo $url; ?>" style="display : block; color:<?php echo $color;?>"><?php echo $logged_hours; ?></a></td>
+									  <td><a href="<?php echo $url; ?>" style="display : block; color:<?php echo $color;?>"><?php echo $assigned_hours; ?></a></td>
+									</tr><?php
+						} ?>
+                    </tbody>
+                  </table>
+                  
+                </div>
+              </div>
+            </div>
+                 <!--<div class="panel-footer">
+                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                        <span class="pull-right">
+                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                        </span>
+                    </div>-->
+            
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- Show Assigned Tasks Ends Here -->	
+
+<!-- Show Hours Starts Here -->	
+	<div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Logged Hours </h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">     
+                <div class=" col-md-12 col-lg-12 "> 
+                  <table class="table">
+				  <thead class="thead-inverse">
 					<tr>
-					  <th scope="row"><a href="<?php echo $url; ?>" style="display : block; color:black" ><?php echo $task_type_name; ?></a></th>
-					  <td><a href="<?php echo $url; ?>" style="display : block; color:black"><?php echo $task_name; ?></a></td>
-					  <td><a href="<?php echo $url; ?>" style="display : block; color:black"><?php echo $logged_hours; ?></a></td>
-					  <td><a href="<?php echo $url; ?>" style="display : block; color:black"><?php echo $assigned_hours; ?></a></td>
+					  <th>Task Type</th>
+					  <th>Task Name</th>
+					  <th>Logged Hours</th>
+					  <th>Assigned Hours</th>
 					</tr>
-				  <?php }} ?>
+				  </thead>
+				 <tbody>
+				<?php $previous_id = -1; 
+					if($result = $db->query("select * from log_task WHERE user_id = '$id' ORDER BY task_id desc ")){
+						while($obj = $result->fetch_object()){ 
+							$task_id = htmlspecialchars($obj->task_id);
+							if($task_id === $previous_id){
+								$logged_hours = $logged_hours + htmlspecialchars($obj->hours);
+								continue; 
+							}
+							elseif($previous_id === -1){
+								$logged_hours = htmlspecialchars($obj->hours);
+							}else{
+								if($assigned_hours < $logged_hours)
+											$color = "red";
+										else
+											$color = "black";
+								?>
+								<tr>
+								  <th scope="row"><a href="<?php echo $url; ?>" style="display : block; color:black" ><?php echo $task_type_name; ?></a></th>
+								  <td><a href="<?php echo $url; ?>" style="display : block; color:black"><?php echo $task_name; ?></a></td>
+								  <td><a href="<?php echo $url; ?>" style="display : block; color:<?php echo $color;?>"><?php echo $logged_hours; ?></a></td>
+								  <td><a href="<?php echo $url; ?>" style="display : block; color:<?php echo $color;?>"><?php echo $assigned_hours; ?></a></td>
+								</tr> <?php 
+								$logged_hours = htmlspecialchars($obj->hours);
+							}
+
+							$previous_id = $task_id; 
+							$assigned_hours = 0;
+							if($result2 = $db->query("select * from assignments where task_id = '$task_id'")){
+								while($obj2 = $result2->fetch_object()){ 
+									$assigned_hours = $assigned_hours + $obj2->hours;
+								}
+								if($result3 = $db->query("select * from task where task_id = '$task_id'")){
+									while($obj3 = $result3->fetch_object()){ 
+										$task_name = $obj3->name;
+										$task_type_id = $obj3->task_type_id;
+										if($result4 = $db->query("select * from task_type where task_type_id = '$task_type_id'")){
+											while($obj4 = $result4->fetch_object()){
+												$task_type_name = $obj4->name;
+											}
+										}
+										else
+											echo "Error Getting Task Type Information";
+									}
+								}else
+									echo "Error Getting Task Information";
+							}
+							else
+								echo "Error Getting Log Information";
+							$url = "display_task.php?t=" . $task_id;
+						}
+						if($assigned_hours < $logged_hours)
+							$color = "red";
+						else
+							$color = "black";?> 
+								<tr>
+								  <th scope="row"><a href="<?php echo $url; ?>" style="display : block; color:black" ><?php echo $task_type_name; ?></a></th>
+								  <td><a href="<?php echo $url; ?>" style="display : block; color:black"><?php echo $task_name; ?></a></td>
+								  <td><a href="<?php echo $url; ?>" style="display : block; color:<?php echo $color;?>"><?php echo $logged_hours; ?></a></td>
+								  <td><a href="<?php echo $url; ?>" style="display : block; color:<?php echo $color;?>"><?php echo $assigned_hours; ?></a></td>
+								</tr>
+								<?php } ?>
                     </tbody>
                   </table>
                   

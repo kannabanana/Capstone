@@ -31,23 +31,20 @@ exit();
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
    
-   
           <div class="panel panel-info">
             <div class="panel-heading">
               <h3 class="panel-title">Employee Records </h3>
             </div>
-			<div class="ui-widget">
-  <label for="first">First: </label>
-  <input id="first">
-</div>
-
-<div class="ui-widget">
-  <label for="last">Last: </label>
-  <input id="last">
-</div>
             <div class="panel-body">
               <div class="row">     
                 <div class=" col-md-9 col-lg-9 "> 
+				<div class="ui-widget">
+					<div class="col-xs-6">
+					<label for="first">Search: </label>
+					<input id="first" type = "text" class= "form-control" placeholder="First"> <br>
+					<input id="last" type = "text" class="form-control" placeholder="Last"><br>
+					</div>
+				</div>
                   <table class="table">
 				  <thead class="thead-inverse">
 					<tr>
@@ -59,7 +56,13 @@ exit();
 				  <?php if($result = $db->query("select * from employee_information ORDER BY last_name asc LIMIT 0,20")){
 							while($obj = $result->fetch_object()){ 
 								$first = htmlspecialchars($obj->first_name);
+								if(strlen($first) > 13){
+									$first = substr($first, 0, 13)  . "..." ;
+								}
 								$last = htmlspecialchars($obj->last_name);
+								if(strlen($last) > 13){
+									$last = substr($last, 0, 13)  . "..." ;
+								}
 								$url = "display_record.php?u=" . htmlspecialchars($obj->user_id);
 							?>
 				  
