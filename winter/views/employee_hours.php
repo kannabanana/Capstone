@@ -33,7 +33,7 @@ if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){			//check if they have 
 else{
 	echo "Please sign in to access this page";
 	sleep(1);
-	header("Location: landing.php");
+	header("Location: landing.php");					//redirecting to landing page
 	exit();
 }
 ?>
@@ -44,11 +44,11 @@ else{
 		  <br>
 		  <div class="panel panel-info">
 		  <div class="panel-heading">
-              <h3 class="panel-title">Input Hours</h3>
+              <h3 class="panel-title">Input Hours</h3>				<!--from to input number of hours-->
             </div>
 			<div class="panel-body">
 		  <div class="container-fluid" >
-			<!--form for input for number of hours--!>
+			<!--form for input for number of hours by asking for task id, hours, descirption, submit--!>
 				  <form data-toggle="validator" role="form" autocomplete="off" action="submit_hours.php" method="post">
 					  <div class="form-group col-sm-6">
 						  <label for="task_id" class="control-label">Task ID</label>
