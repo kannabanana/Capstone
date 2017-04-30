@@ -40,7 +40,7 @@ include("_sidebar_header.php");?>
               <h3 class="panel-title">Registration</h3>
             </div>
 			<div class="panel-body">
-		  <div class="container-fluid" >
+		  <div class="container-fluid" >		<!--displaying information for registration such as username, password, first last, phone number etc-->
 				  <form data-toggle="validator" role="form" autocomplete="off" action="submit_registration.php" method="post">
 					  <div class="form-group col-sm-6">
 						  <label for="user_name" class="control-label">Username</label>

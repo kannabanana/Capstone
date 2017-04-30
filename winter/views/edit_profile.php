@@ -1,7 +1,11 @@
+<!--sidebar and header for navigation and database tables-->
+
 <!DOCTYPE html>
 <?php include("_header.php"); 
 include("_sidebar_header.php");?>
 <html lang="en">
+
+
 
 <head>
 
@@ -22,17 +26,18 @@ include("_sidebar_header.php");?>
 </head>
 
 <body>
+
         <!-- Start Page Content -->
-		<?php 
+		<?php 				//check if the session id for the userid is stored
 		if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){		
-			if(isset($_SESSION['success_reg']) && !empty($_SESSION['success_reg'])){
+			if(isset($_SESSION['success_reg']) && !empty($_SESSION['success_reg'])){			//check for successful registration
 			if($_SESSION['success_reg'] === 1){
 				echo '<span style="color:#AFA;text-align:center;">Update Successful</span>';
 			}else{
 			echo '<span style="color:#E60;text-align:center;">Unsuccessful Update, username already taken.</span>';}
 			unset($_SESSION['success_reg']);}
 			$id = $_SESSION["uid"];
-			if($result = $db->query("select * from employee_information where user_id = '$id'")){
+			if($result = $db->query("select * from employee_information where user_id = '$id'")){			//query employee information table for a specific user id to get first name, last name, phone number email etc.
 				while($obj = $result->fetch_object()){
 					$first = htmlspecialchars($obj->first_name);
 					$last = htmlspecialchars($obj->last_name);
@@ -62,7 +67,7 @@ include("_sidebar_header.php");?>
 		  <div class="container-fluid" >
 				  <form data-toggle="validator" role="form" autocomplete="off" action="submit_edit_profile.php" method="post">
 					  <div class="form-group col-sm-6">
-						  <label for="first" class="control-label">First Name</label>
+						  <label for="first" class="control-label">First Name</label>				<!--this is the from to submit the changes to first name, last name, phone number, email, major, weekly hours etc -->
 						  <input name="first" type="text" class="form-control" placeholder="<?php echo $first;?>" >
 					  </div>
 					  <div class="form-group col-sm-6">
@@ -96,7 +101,7 @@ include("_sidebar_header.php");?>
 		  <div class="panel panel-info">
 		  <div class="panel-heading">
               <h3 class="panel-title">Change Login</h3>
-            </div>
+            </div>		<!--this is the form to change login information which displays the username but requires them to enter the old password before entering the new one-->
 			<div class="panel-body">
 		  <div class="container-fluid" >
 					  <div class="form-group col-sm-6">
@@ -129,6 +134,7 @@ include("_sidebar_header.php");?>
 </div>
 	    <!-- End Page Content -->
 		<script>
+			//this script double checks that the old passwords match and sets the new password
 			var password = document.getElementById("password")
 		  , confirm_password = document.getElementById("confirm_password");
 

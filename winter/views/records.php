@@ -1,9 +1,12 @@
+<!--header and sidebar for navigation and database information-->
+
 <?php include("_header.php"); 
 	  include("_sidebar_header.php");?>
 <!doctype html>
 
 <html>
 <head>
+	<!--for scripts and css-->
 	<meta name="viewport" content="width=device-width, initial-scale=1" content="height=device-height, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -16,6 +19,8 @@
 
 <body>
 <?php 
+
+//check for session id user id otherwise redirect to landing page
 if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
 $id = $_SESSION["uid"];
 
@@ -38,6 +43,7 @@ exit();
             <div class="panel-body">
               <div class="row">     
                 <div class=" col-md-9 col-lg-9 "> 
+				<!--have a search bar for first and last name that's autocomplete-->
 				<div class="ui-widget">
 					<div class="col-xs-6">
 					<label for="first">Search: </label>
@@ -52,7 +58,7 @@ exit();
 					  <th>Last Name</th>
 					</tr>
 				  </thead>
-				 <tbody>
+				 <tbody>		<!--the table will display the information after querying the table by displaying all employee information-->
 				  <?php if($result = $db->query("select * from employee_information ORDER BY last_name asc LIMIT 0,20")){
 							while($obj = $result->fetch_object()){ 
 								$first = htmlspecialchars($obj->first_name);
@@ -77,14 +83,7 @@ exit();
                 </div>
               </div>
             </div>
-                 <!--<div class="panel-footer">
-                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-                        <span class="pull-right">
-                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                        </span>
-                    </div>-->
-            
+           
           </div>
         </div>
       </div>

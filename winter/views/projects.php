@@ -1,3 +1,5 @@
+<!--have header and sidebar for navigation and database information-->
+
 <?php include("_header.php"); 
 	  include("_sidebar_header.php");?>
 <!doctype html>
@@ -14,7 +16,7 @@
 </head>
 
 <body>
-<?php 
+<?php 			//check for user id
 if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
 $id = $_SESSION["uid"];
 
@@ -40,12 +42,12 @@ exit();
                 <div class=" col-md-9 col-lg-9 "> 
                   <table class="table">
 				  <thead class="thead-inverse">
-					<tr>
+					<tr>				<!--display the project name and type in a table-->
 					  <th>Project Type</th>
 					  <th>Project Name</th>
 					</tr>
 				  </thead>
-				 <tbody>
+				 <tbody>	 	<!--query db for projects and display in decsending order-->
 				  <?php if($result = $db->query("select * from project ORDER BY project_id desc LIMIT 0,20")){
 							while($obj = $result->fetch_object()){ 
 								$project_type_id = htmlspecialchars($obj->project_type_id);

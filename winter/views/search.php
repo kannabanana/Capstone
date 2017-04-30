@@ -1,5 +1,6 @@
 <?php
 	
+	//use the key to search through the DB where the first name or last name is similar to the key
     $key=$_GET['key'];
     $array = array();
     $db = new mysqli("oniddb.cws.oregonstate.edu","amidong-db","s7whrue6vvn8lbAP","amidong-db");
