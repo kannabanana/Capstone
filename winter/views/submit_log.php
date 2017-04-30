@@ -21,13 +21,13 @@ include("_header.php");
 	$date 		= mysql_real_escape_string($date);
 	
 	$assigned_hours = 0;
-		
+	//query db for hours based on taskid and userid	
 	if($result = $db->query("select hours from assignments where task_id = '$task_id' and user_id = '$user_id'")){
 		while($obj = $result->fetch_object()){
 			$assigned_hours = htmlspecialchars($obj->hours);
 		}
 	}
-
+	//insert the logid, userid, taskid etc.
 	$log_table = "INSERT INTO log_task (log_id, user_id, task_id, hours, description, date) VALUES ( NULL , '$user_id','$task_id', '$hours', '$desc', '$date')";
 
 	// Send query

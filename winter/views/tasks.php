@@ -1,9 +1,12 @@
+<!--header and sidebar for nav and database-->
+
 <?php include("_header.php"); 
 	  include("_sidebar_header.php");?>
 <!doctype html>
 
 <html>
 <head>
+	<!--css and javascript info-->
 	<meta name="viewport" content="width=device-width, initial-scale=1" content="height=device-height, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -14,7 +17,7 @@
 </head>
 
 <body>
-<?php 
+<?php 	//check if we have user id otherwise redirect to landing
 if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
 $id = $_SESSION["uid"];
 
@@ -41,11 +44,11 @@ exit();
                   <table class="table">
 				  <thead class="thead-inverse">
 					<tr>
-					  <th>Task Type</th>
+					  <th>Task Type</th>			<!--display task name and type-->
 					  <th>Task Name</th>
 					</tr>
 				  </thead>
-				 <tbody>
+				 <tbody>			<!--query top twenty tasks from task table-->
 				  <?php if($result = $db->query("select * from task ORDER BY task_id desc LIMIT 0,20")){
 							while($obj = $result->fetch_object()){ 
 								$task_type_id = htmlspecialchars($obj->task_type_id);
@@ -58,7 +61,7 @@ exit();
 								}
 							?>
 				  
-					<tr>
+					<tr>		<!--display task type and task name-->
 					  <th scope="row"><a href="<?php echo $url; ?>" style="display : block; color:black" ><?php echo $task_type_name; ?></a></th>
 					  <td><a href="<?php echo $url; ?>" style="display : block; color:black"></a><a href="<?php echo $url; ?>" style="display : block; color:black" ><?php echo $task_name; ?></a></td>
 					</tr>

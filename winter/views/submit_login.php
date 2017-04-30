@@ -5,7 +5,7 @@
 include("_header.php");
 // Declare variables
 $user_name        = $_POST[user_name];
-$user_name = filter_var($user_name,FILTER_SANITIZE_STRING);
+$user_name = filter_var($user_name,FILTER_SANITIZE_STRING);				//filter username and password against xss
 
 $password        = $_POST[password];
 $password = filter_var($password,FILTER_SANITIZE_STRING);
