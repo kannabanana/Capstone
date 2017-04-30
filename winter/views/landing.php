@@ -1,5 +1,7 @@
+<!--LANDING PAGE-->
+
 <!DOCTYPE html>
-<?php include("_header.php"); 
+<?php include("_header.php"); 		//header and sidebar incase we need database or sidebar
 include("_sidebar_header.php");?>
 <html lang="en">
 
@@ -13,23 +15,19 @@ include("_sidebar_header.php");?>
 
     <title>EEC Homepage</title>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body>
         <!-- Start Page Content -->
         
+	<!--sign in - can only create an account once you have a valid username and password-->
+	<!--the background is expressed through a jumbotron-->
+
                         <h1>Welcome to EEC Homepage</h1>
-						<?php 
+						<?php 		//check for session id
 						if(isset($_SESSION['uid']) && !empty($_SESSION['uid'])){echo 
                         '<p>Use the sidebar to navigate</p>' ;
-						}else{ echo '
+						}else{ echo '		
 						<div class="jumbotron" style="background-image: url(factory.jpg); height: 700px; background-size: 100%;">
 							<div id="centershit">
 							<form data-toggle="validator" role="form" class="navbar-form pull-right" action="submit_login.php" autocomplete="off" method="post">
