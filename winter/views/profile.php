@@ -19,8 +19,12 @@
 <body>
 <?php
 if(isset($_SESSION['uid']) && !empty($_SESSION['uid'])){
-$id = $_SESSION['uid'];
-
+	if(isset($_SESSION['success_reg']) && !empty($_SESSION['success_reg'])){
+			if($_SESSION['success_reg'] === 1){
+				echo '<span style="color:#AFA;text-align:center;">Update Successful</span>';
+			}
+			unset($_SESSION['success_reg']);}
+	$id = $_SESSION['uid'];
 }
 else{
 echo "Please sign in to access this page";
@@ -49,7 +53,7 @@ if($result = $db->query("select * from employee_information where user_id = '$id
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
            <!--<A href="edit.html" >Edit Profile</A> -->    
 
-        <A href="submit_logout.php" >Logout</A>
+        <A href="edit_profile.php" >Edit Profile</A>
        <br>
       </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
