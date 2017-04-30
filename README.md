@@ -1,6 +1,6 @@
 # Capstone
 
-Welcome to our (Kanna, Garrett, and James - Team 36) capstone project readme! 
+Welcome to our (Team 36) capstone project readme! 
 
 # ABOUT:
 
@@ -11,12 +11,13 @@ The website has been developed by different programmers and as a result has beco
 
 # URL:
 
+http://web.engr.oregonstate.edu/~kannas/capstone/capstone/winter/views/profile.php
 
 
 # CREDENTIALS:
 
-username: test1
-password: test1
+username: kannas
+password: kannas
 
 
 
@@ -30,10 +31,12 @@ GANNT CHART - The Gantt chart is used to manage projects and tasks. The interfac
 
 EMPLOYEE HOURS - We needed to record how long employees were working on a given project. We used the database to handle their logged hours 
 
-
 CODE READABILITY - Our code needs to be periodically maintained and updated by the EEC. Therefore, we used established coding practices and extensively commented. We ran several different software testing tools. 
 
 CLOCK IN/OUT - Record how long an employee has worked for a given stretch of time. The time can be allocated to certain tasks and projects.
 
 SECURITY - All software should be designed with security in mind. Common security risks include malicious SQL injections, forgetting to update software, XSS, error messages, server side validation, passwords, file uploads and SSL. There are some web security tools available to test a website for security.
 
+
+
+# PAGES WE HAVE
