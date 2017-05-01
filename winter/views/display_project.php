@@ -36,19 +36,58 @@ sleep(1);
 header("Location: landing.php");							//redirecting
 exit();
 }
+
+if($result = $db->query("select * from project where project_id = '$id'")){				//get all the project related information for a given project id from the project table
+		while($obj = $result->fetch_object()){
+			$name = htmlspecialchars($obj->name);
+			$start_date = htmlspecialchars($obj->start_date);			//* means start date, end date, desc, project_id, id, task type etc.
+			$end_date = htmlspecialchars($obj->end_date);
+			$desc = htmlspecialchars($obj->desc);
+			$project_id = htmlspecialchars($obj->project_id);
+			$grant_id = htmlspecialchars($obj->grant_id);
+			$project_type_id = htmlspecialchars($obj->project_type_id);
+		}
+		if($result2 = $db->query("select * from `grant` where grant_id = '$grant_id'")){
+			while($obj2 = $result2->fetch_object()){
+				$grant_name = htmlspecialchars($obj2->name);
+			}
+		}
+		if($result3 = $db->query("select * from project_type where project_type_id = '$project_type_id'")){
+			while($obj3 = $result3->fetch_object()){
+				$project_type = htmlspecialchars($obj3->name);
+			}
+		}		
+		$result->close();
+}
 ?>
 
 
 	<!--these are the options for viewing: day, week month, year--!>
 
-    <input type="radio" id="scale1" name="scale" value="1" checked /><label for="scale1">Day scale</label>
-    <input type="radio" id="scale2" name="scale" value="2" /><label for="scale2">Week scale</label>
+    <input type="radio" id="scale1" name="scale" value="1" /><label for="scale1">Day scale</label>
+    <input type="radio" id="scale2" name="scale" value="2" checked /><label for="scale2">Week scale</label>
     <input type="radio" id="scale3" name="scale" value="3" /><label for="scale3">Month scale</label>
     <input type="radio" id="scale4" name="scale" value="4" /><label for="scale4">Year scale</label><br>
 
     <div id="gantt_here" style='width:100%; height:50%;'></div>
 
     <script type="text/javascript">
+
+	gantt.config.xml_date = "%Y-%m-%d %H:%i";
+
+	gantt.config.columns=[									//configuring the column view as taskname, startdate, end date, duration etc.
+    	{name:"text",       label:"Task name",  tree:true, width:'*' },
+    	{name:"start_date", label:"Start time", align: "center" },
+    	{name:"duration",   label:"Duration",   align: "center" }
+    	//{name:"add",        label:"" }
+	];
+
+	gantt.init("gantt_here");	
+	gantt.load('data.php');									//loads data to Gantt from the database
+
+	var dp=new gantt.dataProcessor("data.php");  
+	dp.init(gantt);
+
 	function setScaleConfig(value){
 		switch (value) {
 			case "1":
@@ -79,8 +118,8 @@ exit();
 			case "3":
 				gantt.config.scale_unit = "month";				//for month option set up configurations
 				//gantt.config.step = 1;
-				gantt.config.date_scale = "%F '%y";
-				gantt.config.scale_height = 25;
+				gantt.config.date_scale = "%M '%y";
+				gantt.config.scale_height = 50;
 				gantt.config.subscales = [];
 				gantt.templates.date_scale = null;
 				break;
@@ -90,28 +129,13 @@ exit();
 				gantt.config.date_scale = "%Y";
 				gantt.config.min_column_width = 50;
 				gantt.config.subscales = [];
-				gantt.config.scale_height = 25;
+				gantt.config.scale_height = 50;
 				gantt.templates.date_scale = null;
 				break;
 		}
 	}
 
-	setScaleConfig('4');
-
-	gantt.config.xml_date = "%Y-%m-%d %H:%i";
-
-	gantt.config.columns=[									//configuring the column view as taskname, startdate, end date, duration etc.
-    	{name:"text",       label:"Task name",  tree:true, width:'*' },
-    	{name:"start_date", label:"Start time", align: "center" },
-    	{name:"duration",   label:"Duration",   align: "center" }
-    	//{name:"add",        label:"" }
-	];
-
-	gantt.init("gantt_here");	
-	gantt.load('data.php');									//loads data to Gantt from the database
-
-	var dp=new gantt.dataProcessor("data.php");  
-	dp.init(gantt);
+	setScaleConfig('2');
 
 	var func = function(e) {
 		e = e || window.event;
@@ -127,8 +151,68 @@ exit();
 	}
     </script>
 
-
 <div class="container">
+      <div class="row">
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+			  <!--<A href="edit.html" >Edit Profile</A> -->    
+			  <A align="right" href="edit_project.php" >Edit Project</A>					<!--display the tasks--!>
+       <br>
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title"><?php echo $name; ?> </h3>
+
+            </div>
+            <div class="panel-body">
+              <div class="row">     
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Start Date:</td>
+                        <td><?php echo $start_date;  ?></td>			<!--echo the php variables queried from above-->
+                      </tr>  
+					  <tr>
+                        <td>End Date:</td>
+                        <td><?php echo $end_date;  ?></td>
+                      </tr> 
+					  <tr>
+                        <td>Project Type:</td>
+                        <td><?php echo $project_type;  ?></td>
+                      </tr> 
+					  <tr>
+                        <td>Grant:</td>
+                        <td><?php echo $grant_name;  ?></td>
+                      </tr>
+					  <tr>
+                        <td>Description:</td>
+                        <td><?php echo $desc;  ?></td>
+                      </tr> 					  
+                    </tbody>
+                  </table>
+                  
+                </div>
+              </div>
+            </div>
+                 <!--<div class="panel-footer">
+                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                        <span class="pull-right">
+                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                        </span>
+                    </div>-->
+            
+          </div>
+        </div>
+      </div>
+    </div>
+	
+<div class="container">
+
+
+
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
    

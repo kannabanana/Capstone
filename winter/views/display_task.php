@@ -63,7 +63,7 @@ if($result = $db->query("select * from task where task_id = '$id'")){				//get a
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
            <!--<A href="edit.html" >Edit Profile</A> -->    
 
-        <A href="tasks.php" >Back to tasks Page</A>					<!--display the tasks--!>
+        <A href="edit_task.php" >Edit Task</A>					<!--display the tasks--!>
        <br>
       </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
