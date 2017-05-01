@@ -44,7 +44,7 @@ $project_table = "UPDATE project SET project_type_id = '$project_type_id', grant
 // Send project query
 if (mysqli_query($db, $project_table)) {
 	//query to insert the task into the gantt_tasks table
-	$gantt_tasks = "UPDATE gantt_tasks SET text = '$desc', start_date = '$start_date', duration = '$duration' WHERE project_id = $project_id";
+	$gantt_tasks = "UPDATE gantt_tasks SET text = '$desc', start_date = '$start_date', duration = '$duration' WHERE project_id = $project_id AND parent = 0";
 } 
 else {
     echo "Error: " . $project_table . "<br>" . mysqli_error($db);

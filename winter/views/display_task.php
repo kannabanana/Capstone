@@ -20,7 +20,10 @@
 if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){			//get session id
 	if(isset($_GET["t"]) && !empty($_GET["t"])){
 		$id = $_GET["t"];
-		
+		if(isset($_SESSION["tid"])){
+			unset($_SESSION["tid"]);
+		}
+		$_SESSION["tid"] = $id;
 	}
 	else
 		echo "No task selected from tasks page";

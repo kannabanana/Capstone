@@ -5,6 +5,8 @@
 include("_header.php");
 
 // Declare variables
+$task_id = $_SESSION["tid"]; 
+
 $task_type_id		= $_POST[task_type];
 $task_type_id 		= mysql_real_escape_string($task_type_id);
 
@@ -47,16 +49,13 @@ else{
 }
 
 //desc is an SQL keyword and must be surrounded by back ticks (also known as a grave accent)
-$task_table = "INSERT INTO task ( name, start_date, end_date, `desc`, project_id, m_id, task_type_id ) VALUES ('$name', '$start_date', '$end_date', '$desc', '$project_id', '$m_id', '$task_type_id')";
+$task_table = "UPDATE task SET name = '$name', start_date = '$start_date', end_date = '$end_date', `desc` = '$desc', project_id = '$project_id', m_id = '$m_id', task_type_id = '$task_type_id' WHERE task_id = $task_id";
 
+//query to insert the task into the gantt_tasks table
+$gantt_tasks = "UPDATE gantt_tasks SET text = '$desc', start_date = '$start_date', duration = '$duration', parent = '$parent', project_id = '$project_id' WHERE task_id = $task_id";
 
 //Send both querys
 if (mysqli_query($db, $task_table)) {
-	//get id of last insert
-	$task_id = mysqli_insert_id($db);
-	//query to insert the task into the gantt_tasks table
-	$gantt_tasks = "INSERT INTO gantt_tasks ( text, start_date, duration, parent, project_id, task_id ) VALUES ('$desc', '$start_date', '$duration', '$parent', '$project_id', '$task_id')";
-	
 	if (mysqli_query($db, $gantt_tasks)) {
 		// Redirect to tasks page after successful insertion
 		header("Location: tasks.php");

@@ -73,7 +73,7 @@ if($result = $db->query("select * from project where project_id = '$project_id'"
 				  <form data-toggle="validator" role="form" autocomplete="off" action="submit_edit_project.php" method="post">
 					  <div class="form-group col-sm-6">
 						  <label for="name" class="control-label">Project Name</label>
-						  <?php echo "<input name='name' type='text' class='form-control' id='name' value=" . $name .  ">";?>
+						  <?php echo "<input name='name' type='text' class='form-control' id='name' value='" . $name .  "'>";?>
 						  
 					  </div><br><br><br><br>
 					  <div class="form-group col-sm-6">
