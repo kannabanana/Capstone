@@ -16,7 +16,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="../css/style.css" type="text/css">
-	<script type="text/javascript" src="../js/script.js"></script>	
 	<title> Profile </title>
 </head>
 
@@ -69,9 +68,19 @@ if($result = $db->query("select * from employee_information where user_id = '$id
             </div>
             <div class="panel-body">
               <div class="row">     
-				<?php if(isset($image_data) && !empty($image_data)){?>
-				<div class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="data:image/jpeg;base64,<?php echo base64_encode( $image_data ); ?>" class="img-circle img-responsive" /> </div>
-			  <?php }?>                <div class=" col-md-8 col-lg-8 " align="right"> 
+				<div class="col-md-4 col-lg-4 " align="center"> 
+					<?php if(isset($image_data) && !empty($image_data)){?>
+					<img alt="User Pic" src="data:image/jpeg;base64,<?php echo base64_encode( $image_data ); ?>" class="img-circle img-responsive" /><br>
+			  <?php }?>
+					<form action="upload_photo.php" method="post" enctype="multipart/form-data" >
+					  <div class="form-group" align= "center">
+					  <h4> Upload new photo </h4>
+					  <input type="file" name="image" required/><br>
+						  <button type="submit" class="btn btn-primary">Upload Photo</button>
+					  </div>
+					</form>
+			 </div>
+			  <div class=" col-md-8 col-lg-8 " align="right"> 
                   <table class="table table-user-information" >
                     <tbody>
                       <tr>
