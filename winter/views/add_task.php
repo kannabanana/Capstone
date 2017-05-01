@@ -30,6 +30,7 @@ include("_sidebar_header.php");?>
 <?php 				//check if we have session id, redirect to landing if we don't
 if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
 	$id = $_SESSION["uid"];
+	$project_id = $_SESSION["pid"];
 }
 else{
 	echo "Please sign in to access this page";
@@ -82,8 +83,12 @@ else{
 								
 									$option2.="<select name='project'>";
 									while($obj2 = $result2->fetch_object()){
-										
-									   $option2.="<option value=" . $obj2->project_id . ">" . $obj2->name . "</option> ";
+										if($obj2->project_id == $project_id){
+											$option2.="<option value=" . $obj2->project_id . " selected>" . $obj2->name . "</option> ";
+										}
+										else{
+											$option2.="<option value=" . $obj2->project_id . ">" . $obj2->name . "</option> ";
+										}
 									}
 									$option2.="</select>"; 
 									echo $option2;

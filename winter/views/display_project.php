@@ -24,6 +24,9 @@
 if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){				//checking if the user_id is available, otherwise redirect to landing page
 	if(isset($_GET["p"]) && !empty($_GET["p"])){
 		$id = $_GET["p"];
+		if(isset($_SESSION["pid"])){
+			unset($_SESSION["pid"]);
+		}
 		$_SESSION["pid"] = $id;							//store their id
 		
 	}
@@ -154,8 +157,8 @@ if($result = $db->query("select * from project where project_id = '$id'")){				/
 <div class="container">
       <div class="row">
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-			  <!--<A href="edit.html" >Edit Profile</A> -->    
-			  <A align="right" href="edit_project.php" >Edit Project</A>					<!--display the tasks--!>
+			  <!--<A href="edit_project.php" >Edit Project</A> -->    
+			  <A align="right" href="edit_project.php" >Edit Project</A>					<!--display the project--!>
        <br>
       </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
@@ -211,12 +214,13 @@ if($result = $db->query("select * from project where project_id = '$id'")){				/
 	
 <div class="container">
 
-
-
       <div class="row">
+	<div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+		<A align="right" href="add_task.php" >Add Task</A>
+	</div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-   
-   
+  
+   	
           <div class="panel panel-info">
             <div class="panel-heading">
               <h3 class="panel-title">Tasks</h3>

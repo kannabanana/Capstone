@@ -159,11 +159,11 @@ if($result = $db->query("select * from task where task_id = '$task_id'")){				//
 					<!--display start, end, description--!>
 					  <div class="form-group col-sm-6" align="left">
 						  <label for="start_date" class="control-label">Start Date</label>
-						  <?php echo "<input name='start_date' type='text' class='form-control' id='start_date' value=" . $start_date . ">"; ?>
+						  <?php echo "<input name='start_date' type='date' class='form-control' id='start_date' value=" . $start_date . ">"; ?>
 					  </div>
 					  <div class="form-group col-sm-6">
 						  <label for="end_date" class="control-label">End Date</label>
-						  <?php echo "<input name='end_date' type='text' class='form-control' id='end_date' value=" . $end_date . ">"; ?>
+						  <?php echo "<input name='end_date' type='date' class='form-control' id='end_date' value=" . $end_date . ">"; ?>
 					  </div><br>
 					  <div class="form-group col-sm-12">
 						  <label for="description" class="control-label">Description</label>
