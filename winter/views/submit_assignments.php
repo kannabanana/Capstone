@@ -5,7 +5,9 @@
 include("_header.php");
 //Query User_ID from first and last name
 $first = $_POST[first];
+//$first = $mysqli_real_escape_string($first);
 $last = $_POST[last];
+//$last = $mysqli_real_escape_string($last);
 
 
 //Check First name for " ' " 
