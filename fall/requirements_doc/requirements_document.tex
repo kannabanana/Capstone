@@ -70,8 +70,8 @@ The purpose of this document is to describe the specific requirements for the En
 
 \subsection{Product Scope}
 
-EEC helps businesses in the Northwest save money, energy and improve their environmental impact by identifying opportunities to save energy and increase productivity, while reducing cost and waste. The EEC is looking to store and organize the information produced, stored, and tracked through the center’s day to day activity. In order to be most useful to the center, the website needs to be secure and efficiently organized with specific features to manage data on their projects, users and clients.\par
-The primary features the client is looking to implement can be subdivided into keeping track of projects and employees. Specifically, all active employees should be listed and have account specific details such as such as pay rate, major, the date the started at the center. Furthermore, the website should keep record the number of hours an employee has worked on a task, specifically to keep track of task progress and to prevent employees from exceeding the maximum number of hours. Specific projects should be kept track from the implementation call to the completion of the project. Projects should be marked as in-progress, complete etc. Each project should be able to add tasks noted by the task specification and task deadline. There should also be an efficient implementation for tasks not associated with a specific project, which are specific to an employee. Stretch goals such as mobile web application or additional features will be added and evaluated based on the development process. 
+EEC helps businesses in the Northwest save money, energy and improve their environmental impact by identifying opportunities to save energy and increase productivity, while reducing cost and waste. The EEC is looking to store and organize the information produced, stored, and tracked through the center’s day to day activity. In order to be most useful to the center, the website needs to be secure and efficiently organized with specific features to manage employees, projects, and clients.\par
+The primary features the client is looking to implement can be subdivided into keeping track of projects and employees. Specifically, all active employees should be listed and have account specific details such as such as email, contact, weekly hours, major, the date the started at the center. Furthermore, the website should keep record the number of hours an employee has worked on a task, specifically to keep track of task progress and to prevent employees from exceeding the maximum number of hours. Projects should be monitored from the creation to the completion of the project. Each project should be able to add tasks. There should also be an efficient implementation for tasks not associated with a specific project, which are specific to an employee. Stretch goals such as mobile web application or additional features will be added and evaluated based on the development process. 
 
 \subsection{Definitions}
 
@@ -103,7 +103,7 @@ The remainder of the document will go in depth about the following items:
 
 \subsection{Product Perspective}
 
-The EEC website is intended to be a secure, efficiently organized website to help store and organize the information at the center, specifically with features of manage projects and employees. It is intended to be a self-contained environment with access to wifi which only requires a desktop/laptop with a web-browser, without any external hardware dependencies. There is an existing website in place, but it does not meet the client’s security or usability satisfaction.
+The EEC website is intended to be a secure, efficiently organized website to help store and organize the information at the center, specifically with features to manage projects and employees. It is intended to be a self-contained environment with access to wifi which only requires a desktop/laptop with a web-browser, without any external hardware dependencies. There is an existing website in place, but it does not meet the client’s security or usability satisfaction.
 
 \subsubsection{System Interfaces}
 
@@ -143,7 +143,7 @@ Not currently applicable.
 
 \subsection{Product Functions}
 
-The primary features the client is looking to implement can be subdivided into keeping track of projects and employees. Specifically, all active employees should be listed and have account specific details such as such as pay rate, major, the date the started at the center. Furthermore, the website should keep record the number of hours an employee has worked on a task, specifically to keep track of task progress and to prevent employees from exceeding the maximum number of hours. Specific projects should be kept track from the implementation call to the completion of the project. Projects should be marked as in-progress, complete etc. Each project should be able to add tasks noted by the task specification and task deadline. There should also be an efficient implementation for tasks not associated with a specific project, which are specific to an employee. Stretch goals such as mobile web application or additional features will be added and evaluated based on the development process. 
+Specifically, all active employees should be listed and have account specific details such as such as email, contact, weekly hours, major, the date the started at the center. Furthermore, the website should keep record the number of hours an employee has worked on a task, specifically to keep track of task progress and to prevent employees from exceeding the maximum number of hours. Projects should be monitored from the creation to the completion of the project. Each project should be able to add tasks. There should also be an efficient implementation for tasks not associated with a specific project, which are specific to an employee. Stretch goals such as mobile web application or additional features will be added and evaluated based on the development process. 
 
 \subsection{User Characteristics}
 
@@ -151,7 +151,7 @@ The only users who have access to the website are authorized users, or employees
 
 \subsection{Design and Implementation Constraints}
 
-There are a few constraints to consider during development: passwords must be sent and stored in encrypted form, data must be stored in a relational database for quick queries and storage, some users have more authorization than others, Server-Client communication should be over TCP connections. Furthermore, we are limited to free, open-source technology. The website will be maintained by the customer’s organization, so all code and software should be easy to use and maintainable to them. We have agreed to use primarily use Bootstrap, HTML, CSS, Javascript, PHP and SQL.
+There are a few constraints to consider during development: passwords must be sent and stored in encrypted form and data must be stored in a relational database for quick queries. Furthermore, we are limited to free, open-source technology. The website will be maintained by the customer’s organization, so all code and software should be easy to use and maintainable to them. We have agreed to use primarily use Bootstrap, HTML, CSS, Javascript, PHP and SQL.
 
 \subsection{Apportioning Requirements}
 
@@ -159,36 +159,35 @@ There are a few constraints to consider during development: passwords must be se
 
 \subsection{Assumptions and Dependencies}
 
-We assume that the operating system and browser running the website is up to date and can handle new CSS, javascript plugins etc. We also assume there is stable, secure internet connection available.
+We assume that the operating system and browser running the website is up to date and can handle new CSS, Javascript plugins etc. We also assume there is stable, secure internet connection available.
 
 \section{Specific Requirements}
 
-\subsection{Time Tracker}
+\subsection{Log Hours}
 
 \subsubsection{Description and Priority}
 
-The time tracker is how employees report what they have spent time on. It allows them to record how much time they have worked and bill those hours to specific tasks. The management team will use this system to understand which employees need help completing a task. Additionally, this time tracker ensures no employee exceeds a set amount of hours on any given task. The priority of this system is high as it is necessary to accomplish work on a daily basis.
+Logging hours is how employees report what they have spent time on. This is self reported. It allows them to record how much time they have worked and bill hours to specific tasks. The management team will use this system to understand which employees need help completing a task. Additionally, this time tracker ensures no employee exceeds a set amount of hours on any given task. The priority of this system is high as it is necessary to accomplish work on a daily basis.
 
 \subsubsection{Action and Result}
 
-The action of an employee clocking in and then out will result in a record of the amount of time between those two events. This amount will be assigned to one or more tasks resulting in a total hour count the employee has spent on each task. If assigning hours to a task results in an employee exceeding their allotted time for that task, the employee will be notified.
+This amount will be assigned to one or more tasks resulting in a total hour count the employee has spent on each task. If assigning hours to a task results in an employee exceeding their allotted time for that task, the employee will be notified.
 
 \subsubsection{Functional Requirements}
 
 The functional requirements for this system are as follows:
 \begin{itemize}
-\item Keep time and record elapsed time between clocking in and out
 \item Allow user to assign hours to a single task
 \item Allow user to split hours between multiple tasks
-\item Allow upper management to view employee hours based per task
 \item Detect if employee has exceeded hour limit on a given task
+\item Include the date and a description
 \end{itemize}
 
 \subsection{Employee Information}
 
 \subsubsection{Description and Priority}
 
-All information about employees must be made available. Each employee has a job title, pay rate, major, start date, and contact information. These items are displayed for management and employees to see. The priority of this system is medium as it will not make the site unusable if it does not exist.
+All information about employees must be made available. Each employee has a name, major, start date, and contact information. These items should be displayed on their employee page. The priority of this system is medium as it will not make the site unusable if it does not exist.
 
 
 \subsubsection{Action and Result}
@@ -231,11 +230,11 @@ The functional requirements for this system are as follows:
 
 \subsubsection{Description and Priority}
 
-The home page will be a central place to access the most important aspects of the website. Things included here will be links to all other pages and an overview of current projects. The home page will only be accessible by those who have logged in with a valid username and password. The home page is an area where important data will be readily available. The priority of this system is high because without it users will be lost.
+The home page or profile page for a given user will be a central place to access the most important aspects of the website. Things included here will be links to all other pages. The home page will only be accessible by those who have logged in with a valid user-name and password. The home page is an area where important data will be readily available. The priority of this system is high because without it users will be lost.
 
 \subsubsection{Action and Result}
 
-The action of logging in successfully will result in the user viewing the homepage. The action of selecting a link on the homepage will result in the user being taken to the connected page. The action of selecting home will take the user back to the homepage. 
+The action of logging in successfully will result in the user viewing their profile page. The action of selecting a link on the homepage will result in the user being taken to the connected page. The action of selecting home will take the user back to the homepage. 
 
 \subsubsection{Functional Requirements}
 
@@ -250,12 +249,12 @@ The functional requirements for this system are as follows:
 
 \subsection{Performance Requirements}
 
-The EEC website must function consistently and quickly. The site cannot crash or become unusable due to increased load. This is important to the site because employees will depend on it in order to complete their daily job. In order to test that these requirements are met we will complete performance tests after the site is complete. Latency and reliability will be tested by increasing the load on the website. We will also beta test the website with the EEC to make sure it can handle daily use.\par
+The EEC website must function consistently and quickly. The site cannot crash or become unusable. This is important to the site because employees will depend on it in order to complete their daily job. In order to test that these requirements are met we will complete performance tests after the site is complete. We will also beta test the website with the EEC to make sure it can handle daily use.\par
 In addition, the website needs to be easily usable. This includes navigation and time to learn. In order to gauge these factors we will use a heuristic evaluation. We will be evaluating the site on user control and freedom, consistency and standards, and recognition rather than recall. Control and freedom is dependant upon user’s ability to control what page they are on and move about the site freely without going through unnecessary pages. Consistency and standards is dependant upon words and actions meaning the same thing on all pages. Recognition rather than recall is dependant upon the user’s ability to intuitively navigate without having to learn and remember.
 
 \subsection{Software Quality}
 
-The software quality of the website must allow for future additions and modifications to the website. These future changes will be made by employees who did not design the original site. For this reason code must be clear and stick closely to one format. Comments will be used heavily in order to increase code readability. The current employee who works on modifying the database and website, Anya Lehman, will verify that the code is understandable once the site is created.
+The software quality of the website must allow for future additions and modifications to the website. These future changes will be made by employees who did not design the original site. For this reason code must be clear and stick closely to one format. Comments will be used heavily in order to increase code readability. The current employees who works on modifying the database and website will verify that the code is understandable once the site is created.
 
 \section{Signatures\newline\newline\newline}
 
