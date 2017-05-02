@@ -2,6 +2,11 @@
 
 Welcome to our (Team 36) capstone project readme! 
 
+
+#NOTE:
+
+We have updated our requirements document and design document with our clients permission. We have submitted our requirements document. We have until Wednesday for our design document. Both files are located under fall/
+
 # ABOUT:
 
  OSU’s Energy Efficiency Center helps manufacturing and industrial companies reduce their energy footprint. This is accomplished by producing reports about energy trends and making recommendations based on them. The reports, projects, and other data are maintained in their internal website. 
@@ -31,12 +36,14 @@ GANNT CHART - The Gantt chart is used to manage projects and tasks. The interfac
 
 EMPLOYEE HOURS - We needed to record how long employees were working on a given project. We used the database to handle their logged hours 
 
-CODE READABILITY - Our code needs to be periodically maintained and updated by the EEC. Therefore, we used established coding practices and extensively commented. We ran several different software testing tools. 
+CODE READABILITY - Our code needs to be periodically maintained and updated by the EEC. Therefore, we used established coding practices and extensively commented. We ran different software testing tools. 
 
 CLOCK IN/OUT - Record how long an employee has worked for a given stretch of time. The time can be allocated to certain tasks and projects.
 
-SECURITY - All software should be designed with security in mind. Common security risks include malicious SQL injections, forgetting to update software, XSS, error messages, server side validation, passwords, file uploads and SSL. There are some web security tools available to test a website for security.
+SECURITY - All software should be designed with security in mind. Common security risks include malicious SQL injections, XSS, error messages, server side validation, passwords etc.
 
 
 
-# PAGES WE HAVE
+# CODEBASE
+
+Is located under winter/views

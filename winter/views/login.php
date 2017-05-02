@@ -5,7 +5,6 @@
 </head>
 <body>
 <?php
-
   include("_header.php");
   // Connect to the database
   
