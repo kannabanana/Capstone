@@ -3,9 +3,10 @@
 Welcome to our (Team 36) capstone project readme! 
 
 
-#NOTE:
+# NOTE:
 
-We have updated our requirements document and design document with our clients permission. We have submitted our requirements document. We have until Wednesday for our design document. Both files are located under fall/
+We have updated our requirements document and design document with our clients permission. We have submitted our requirements document. We will update our design document by Wednesday. The requirements document is updated. The files are located under fall/
+
 
 # ABOUT:
 
