@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php include("_header.php"); 
-include("_sidebar_header.php");?>			<!--have header and side bar--!>
+include("_sidebar_header.php");?>			<!--have header and side bar-->
 <html lang="en">
 
 <head>
@@ -44,6 +44,7 @@ if($result = $db->query("select * from project where project_id = '$project_id'"
 			$project_id = htmlspecialchars($obj->project_id);
 			$grant_id = htmlspecialchars($obj->grant_id);
 			$project_type_id = htmlspecialchars($obj->project_type_id);
+			$lead_id = htmlspecialchars($obj->lead_id);
 		}
 		if($result2 = $db->query("select * from `grant` where grant_id = '$grant_id'")){
 			while($obj2 = $result2->fetch_object()){
@@ -54,8 +55,17 @@ if($result = $db->query("select * from project where project_id = '$project_id'"
 			while($obj3 = $result3->fetch_object()){
 				$project_type = htmlspecialchars($obj3->name);
 			}
-		}		
+		}
+		if($result4 = $db->query("select * from employee_information where user_id = '$lead_id'")){
+			while($obj4 = $result4->fetch_object()){
+				$first = htmlspecialchars($obj4->first_name);
+				$last = htmlspecialchars($obj4->last_name);
+			}
+		}
 		$result->close();
+		$result2->close();
+		$result3->close();
+		$result4->close();
 }
 ?>
 
@@ -66,7 +76,7 @@ if($result = $db->query("select * from project where project_id = '$project_id'"
 		  <br>
 		  <div class="panel panel-info">
 		  <div class="panel-heading">
-              <h3 class="panel-title">Edit Project</h3>				<!--create a project by selecting name, and grant type --!>
+              <h3 class="panel-title">Edit Project</h3>				<!--create a project by selecting name, and grant type -->
             </div>
 			<div class="panel-body">
 		  <div class="container-fluid" >
@@ -75,6 +85,10 @@ if($result = $db->query("select * from project where project_id = '$project_id'"
 						  <label for="name" class="control-label">Project Name</label>
 						  <?php echo "<input name='name' type='text' class='form-control' id='name' value='" . $name .  "'>";?>
 						  
+					  </div>
+					  <div class="form-group col-sm-6">															<!--auto fill for project lead-->
+						  <label for="firstLast" class="control-label">Project Lead</label>
+						  <?php echo "<input id='firstLast' name= 'firstLast' type = 'text' class='form-control' value='" . $first . " " . $last . "'>";?>
 					  </div><br><br><br><br>
 					  <div class="form-group col-sm-6">
 						  <label for="project_type" class="control-label">Project Type</label><br>
@@ -147,3 +161,4 @@ if($result = $db->query("select * from project where project_id = '$project_id'"
 		
 </body>
 <?php include("_sidebar_footer.php");?>
+<?php include("_autocomplete_footer.php");?>

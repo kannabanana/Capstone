@@ -49,6 +49,7 @@ if($result = $db->query("select * from project where project_id = '$id'")){				/
 			$project_id = htmlspecialchars($obj->project_id);
 			$grant_id = htmlspecialchars($obj->grant_id);
 			$project_type_id = htmlspecialchars($obj->project_type_id);
+			$lead_id = htmlspecialchars($obj->lead_id);
 		}
 		if($result2 = $db->query("select * from `grant` where grant_id = '$grant_id'")){
 			while($obj2 = $result2->fetch_object()){
@@ -59,13 +60,22 @@ if($result = $db->query("select * from project where project_id = '$id'")){				/
 			while($obj3 = $result3->fetch_object()){
 				$project_type = htmlspecialchars($obj3->name);
 			}
-		}		
+		}
+		if($result4 = $db->query("select * from employee_information where user_id = '$lead_id'")){
+			while($obj4 = $result4->fetch_object()){
+				$first = htmlspecialchars($obj4->first_name);
+				$last = htmlspecialchars($obj4->last_name);
+			}
+		}
 		$result->close();
+		$result2->close();
+		$result3->close();
+		$result4->close();
 }
 ?>
 
 
-	<!--these are the options for viewing: day, week month, year--!>
+	<!--these are the options for viewing: day, week month, year-->
 
     <input type="radio" id="scale1" name="scale" value="1" /><label for="scale1">Day scale</label>
     <input type="radio" id="scale2" name="scale" value="2" checked /><label for="scale2">Week scale</label>
@@ -158,7 +168,7 @@ if($result = $db->query("select * from project where project_id = '$id'")){				/
       <div class="row">
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
 			  <!--<A href="edit_project.php" >Edit Project</A> -->    
-			  <A align="right" href="edit_project.php" >Edit Project</A>					<!--display the project--!>
+			  <A align="right" href="edit_project.php" >Edit Project</A>					<!--display the project-->
        <br>
       </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
@@ -174,6 +184,10 @@ if($result = $db->query("select * from project where project_id = '$id'")){				/
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
+                        <td>Project Lead:</td>
+                        <td><?php echo $first . " " . $last;  ?></td>
+                      </tr> 
+					  <tr>
                         <td>Start Date:</td>
                         <td><?php echo $start_date;  ?></td>			<!--echo the php variables queried from above-->
                       </tr>  

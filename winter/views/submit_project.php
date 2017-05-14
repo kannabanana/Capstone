@@ -32,9 +32,41 @@ if($duration = $db ->query("SELECT DATEDIFF('$end_date', '$start_date') AS durat
 else{
 	echo "failed to calculate duration";
 }
-
-//desc is an SQL keyword and must be surrounded by back ticks (also known as a grave accent)
-$project_table = "INSERT INTO project (project_type_id, grant_id, start_date, end_date, `desc`, name) VALUES ('$project_type_id','$grant_id', '$start_date', '$end_date', '$desc', '$name')";
+if(isset($_POST['firstLast']) && !empty($_POST['firstLast'])){
+	$combined_name = $_POST['firstLast'];
+	for($i = 0; $i < strlen($combined_name); $i++){				//Split the combined first and last into 2 variables
+		if($combined_name[$i] === " "){
+			$first = substr($combined_name, 0, $i);
+			$last = substr($combined_name, $i+1, strlen($combined_name) - $i);
+			break;
+		}
+	}
+	//Check first and last name for apostrophes
+	for($i = 0; $i < strlen($last); $i++){				
+		if($last[$i] === "'"){
+			$last = substr($last, 0, $i) . "\\".  substr($last, $i, strlen($last) - $i);
+			break;
+		}
+	}
+	for($i = 0; $i < strlen($first); $i++){
+		if($first[$i] === "'"){
+			$first = substr($first, 0, $i) . "\\".  substr($first, $i, strlen($first) - $i);
+			break;
+		}
+	}
+	if($result4 = $db->query("select * from employee_information where first_name = '$first' and last_name = '$last'")){
+		while($obj4 = $result4->fetch_object()){
+			$project_lead = htmlspecialchars($obj4->user_id);
+		}
+	}
+	//desc is an SQL keyword and must be surrounded by back ticks (also known as a grave accent)
+	$project_table = "INSERT INTO project (project_type_id, grant_id, start_date, end_date, `desc`, name, lead_id) VALUES ('$project_type_id','$grant_id', '$start_date', '$end_date', '$desc', '$name', '$project_lead')";
+	
+}
+else{
+	//desc is an SQL keyword and must be surrounded by back ticks (also known as a grave accent)
+	$project_table = "INSERT INTO project (project_type_id, grant_id, start_date, end_date, `desc`, name, lead_id) VALUES ('$project_type_id','$grant_id', '$start_date', '$end_date', '$desc', '$name')";
+}
 
 //query to insert the task into the gantt_tasks table
 

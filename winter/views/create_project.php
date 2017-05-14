@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php include("_header.php"); 
-include("_sidebar_header.php");?>			<!--have header and side bar--!>
+include("_sidebar_header.php");?>			<!--have header and side bar-->
 <html lang="en">
 
 <head>
@@ -43,7 +43,7 @@ else{
 		  <br>
 		  <div class="panel panel-info">
 		  <div class="panel-heading">
-              <h3 class="panel-title">Create Project</h3>				<!--create a project by selecting name, and grant type --!>
+              <h3 class="panel-title">Create Project</h3>				<!--create a project by selecting name, and grant type -->
             </div>
 			<div class="panel-body">
 		  <div class="container-fluid" >
@@ -51,6 +51,10 @@ else{
 					  <div class="form-group col-sm-6">
 						  <label for="name" class="control-label">Project Name</label>
 						  <input name="name" type="text" class="form-control" id="name" placeholder="" required>
+					  </div>
+					  <div class="form-group col-sm-6">															<!--auto fill for project lead-->
+						  <label for="firstLast" class="control-label">Project Lead</label>
+						  <input id="firstLast" name= "firstLast" type = "text" class="form-control" placeholder="First Last">
 					  </div><br><br><br><br>
 					  <div class="form-group col-sm-6">
 						  <label for="project_type" class="control-label">Project Type</label><br>
@@ -114,3 +118,4 @@ else{
 		
 </body>
 <?php include("_sidebar_footer.php");?>
+<?php include("_autocomplete_footer.php");?>
