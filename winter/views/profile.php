@@ -51,24 +51,27 @@ if($result = $db->query("select * from employee_information where user_id = '$id
 		}
 		$result->close();
 } ?>
+<!-- First container with employee information -->
 <div class="container">
       <div class="row">
-      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-           <!--<A href="edit.html" >Edit Profile</A> -->    
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">  
 
         <A href="edit_profile.php" >Edit Profile</A>
        <br>
       </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-   
-   
           <div class="panel panel-info">
             <div class="panel-heading">
               <h3 class="panel-title"><?php echo $first; ?> <?php echo $last;?> </h3>
             </div>
             <div class="panel-body">
-              <div class="row">     
+              <div class="row"> 
+			  
+			  
+			  
+				<!-- Profile Picture -->
 				<div class="col-md-4 col-lg-4 " align="center"> 
+				<!-- check to see if user has uploaded an image -->
 					<?php if(isset($image_data) && !empty($image_data)){?>
 					<img alt="User Pic" src="data:image/jpeg;base64,<?php echo base64_encode( $image_data ); ?>" class="img-circle img-responsive" /><br>
 			  <?php }?>
@@ -79,7 +82,12 @@ if($result = $db->query("select * from employee_information where user_id = '$id
 						  <button type="submit" class="btn btn-primary">Upload Photo</button>
 					  </div>
 					</form>
-			 </div>
+				</div>
+				<!-- End Profile Picture -->
+				
+				
+				
+			  <!-- Start Table of employee information -->	
 			  <div class=" col-md-8 col-lg-8 " align="right"> 
                   <table class="table table-user-information" >
                     <tbody>
@@ -111,9 +119,12 @@ if($result = $db->query("select * from employee_information where user_id = '$id
                   </table>
                   
                 </div>
+				<!-- End Table of employee information -->
+				
+				
+				
               </div>
             </div>
-           
           </div>
         </div>
       </div>

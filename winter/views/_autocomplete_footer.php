@@ -7,6 +7,7 @@
   $( function() {
 	  var firstTags = new Array();
 	  var lastTags = new Array();
+	  var firstLastTags = new Array();
 	  <?php 
 	  if($result = $db->query("select * from employee_information")){
 		while($obj = $result->fetch_object()){
@@ -25,6 +26,7 @@
 ?>
 	lastTags.push('<?php echo $fixedLast;?>');		//push forward the suggestion
 	firstTags.push('<?php echo $fixedFirst;?>');
+	firstLastTags.push('<?php echo $fixedFirst ." ". $fixedLast;?>');
 	<?php 
 		}
 		$result->close();
@@ -35,6 +37,9 @@
     });
 	$( "#last" ).autocomplete({
       source: lastTags
+    });
+	$( "#firstLast" ).autocomplete({
+      source: firstLastTags
     });
   });
   </script>

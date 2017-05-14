@@ -17,14 +17,49 @@
 
 <body>
 
-<?php 				//check the user id is present
+<?php 				//check if the user was selected or searched for or neither
+//first check for selected
 if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])){
 	if(isset($_GET["u"]) && !empty($_GET["u"])){
 		$id = $_GET["u"];
 		
 	}
-	else
-		echo "No user selected from employee records page.";				//display error if the user is not displaying user details
+//check for searched user	
+	elseif(isset($_POST['firstLast']) && !empty($_POST['firstLast'])){
+		$combined_name = $_POST['firstLast'];
+		for($i = 0; $i < strlen($combined_name); $i++){				//Split the combined first and last into 2 variables
+			if($combined_name[$i] === " "){
+				$first = substr($combined_name, 0, $i);
+				$last = substr($combined_name, $i+1, strlen($combined_name) - $i);
+				break;
+			}
+		}
+		//Check first and last name for apostrophes
+		for($i = 0; $i < strlen($last); $i++){				
+			if($last[$i] === "'"){
+				$last = substr($last, 0, $i) . "\\".  substr($last, $i, strlen($last) - $i);
+				break;
+			}
+		}
+		for($i = 0; $i < strlen($first); $i++){
+			if($first[$i] === "'"){
+				$first = substr($first, 0, $i) . "\\".  substr($first, $i, strlen($first) - $i);
+				break;
+			}
+		}
+		//search for employee user_id with the same first and last name	
+		if($result = $db->query("select user_id from employee_information where first_name = '$first' and last_name = '$last'")){		
+			while($obj = $result->fetch_object()){						
+				$id = htmlspecialchars($obj -> user_id);
+			}
+			$result->close();
+		}
+	}
+
+	//display error if the user is not displaying user details
+	else{ 
+		echo "No user selected from employee records page.";
+	}
 }
 else{
 echo "Please sign in to access this page";
@@ -33,7 +68,7 @@ header("Location: landing.php");								//redirect to landing
 exit();
 }
 if($result = $db->query("select * from employee_information where user_id = '$id'")){		//get all employee related information based on given user-id	
-		while($obj = $result->fetch_object()){						//firstname, lastname, phonenumer,email,major,current etc.
+		while($obj = $result->fetch_object()){						//first name, last name, phone number,email,major,current etc.
 			$first = htmlspecialchars($obj->first_name);
 			$last = htmlspecialchars($obj->last_name);
 			$user = htmlspecialchars($obj->user_name);

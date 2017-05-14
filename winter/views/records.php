@@ -12,7 +12,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="../css/style.css" type="text/css">
-	<script type="text/javascript" src="../js/script.js"></script>
 	
 	<title> Records </title>
 </head>
@@ -46,9 +45,11 @@ exit();
 				<!--have a search bar for first and last name that's autocomplete-->
 				<div class="ui-widget">
 					<div class="col-xs-6">
-					<label for="first">Search: </label>
-					<input id="first" type = "text" class= "form-control" placeholder="First"> <br>
-					<input id="last" type = "text" class="form-control" placeholder="Last"><br>
+					<form method = "post" action="display_record.php" >
+						<label for="firstLast">Search: </label>
+						<input id="firstLast" name= "firstLast" type = "text" class="form-control" placeholder="First Last"><br>
+					<button type="submit" class="btn btn-primary">Search</button>
+					</form>
 					</div>
 				</div>
                   <table class="table">
@@ -59,7 +60,7 @@ exit();
 					</tr>
 				  </thead>
 				 <tbody>		<!--the table will display the information after querying the table by displaying all employee information-->
-				  <?php if($result = $db->query("select * from employee_information ORDER BY last_name asc LIMIT 0,20")){
+				  <?php if($result = $db->query("select * from employee_information ORDER BY last_name asc LIMIT 0,10")){
 							while($obj = $result->fetch_object()){ 
 								$first = htmlspecialchars($obj->first_name);
 								if(strlen($first) > 13){

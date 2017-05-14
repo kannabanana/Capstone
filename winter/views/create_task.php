@@ -52,7 +52,7 @@ else{
               <h3 class="panel-title">Create Task</h3>
             </div>
 			<div class="panel-body">
-		  <div class="container-fluid" >				<!--Check for a given task and identify it's id--!>
+		  <div class="container-fluid" >				<!--Check for a given task and identify it's id -->
 				  <form data-toggle="validator" role="form" autocomplete="off" action="submit_task.php" method="post">
 					  <div class="form-group col-sm-6">
 						  <label for="name" class="control-label">Task Name</label>
@@ -116,14 +116,15 @@ else{
 					  
 
 
-					<!--display start, end, description--!>
+					<!--display start, end, description -->
+					
 					  <div class="form-group col-sm-6" align="left">
 						  <label for="start_date" class="control-label">Start Date</label>
 						  <input name="start_date" type="date" class="form-control" id="start_date" placeholder="yyyy-mm-dd" required>
 					  </div>
 					  <div class="form-group col-sm-6">
 						  <label for="end_date" class="control-label">End Date</label>
-						  <input name="end_date" type="date" class="form-control" id="end_date" placeholder="yyyy-mm-dd" required>
+						  <input name="end_date" type="text" class="form-control" id="end_date" placeholder="yyyy-mm-dd" required>
 					  </div><br>
 					  <div class="form-group col-sm-12">
 						  <label for="description" class="control-label">Description</label>
