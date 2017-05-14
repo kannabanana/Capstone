@@ -82,11 +82,14 @@ else{
 						  <label for="description" class="control-label">Description</label>
 						  <textarea name="description" type="text" class="form-control" rows="3" placeholder="" required></textarea>
 					  </div><br>
-					  <div class="form-group col-sm-6" align="left">
+					  <div class="form-group col-sm-6">
 						  <label for="date" class="control-label">Date Worked</label>
-						  <input name="date" type="text" class="form-control" id="date" placeholder="yyyy-mm-dd" required>
+						  <input name="date" type="date" class="form-control" required>
 					  </div>
-					  
+					  <div class="form-group col-sm-6" >
+						  <label for="stipend" class="control-label" >Stipend</label><br>
+						  <input name="stipend" type="checkbox" id="stipend" value="1" ><br>
+					  </div>
 					  <div class="form-group" align= "right">
 						  <button type="submit" class="btn btn-primary">Submit</button>
 					  </div>

@@ -13,10 +13,10 @@ $project_type_id 	= mysql_real_escape_string($project_type_id);
 $grant_id 			= $_POST[grant_type];
 $grant_id 			= mysql_real_escape_string($grant_id);
 
-$start_date 		= date("Y-m-d", strtotime($_POST[start_date]));
+$start_date 		= $_POST[start_date];
 $start_date 		= mysql_real_escape_string($start_date);
 
-$end_date 			= date("Y-m-d", strtotime($_POST[end_date]));
+$end_date 			= $_POST[end_date];
 $end_date 			= mysql_real_escape_string($end_date);
 
 $desc 				= $_POST[description];
@@ -76,7 +76,7 @@ else{
 // Send project query
 if (mysqli_query($db, $project_table)) {
 	//query to insert the task into the gantt_tasks table
-	$gantt_tasks = "UPDATE gantt_tasks SET text = '$name', start_date = '$start_date', duration = '$duration' WHERE project_id = $project_id AND parent = 0";
+	$gantt_tasks = "UPDATE gantt_tasks SET text = '$desc', start_date = '$start_date', duration = '$duration' WHERE project_id = $project_id";
 } 
 else {
     echo "Error: " . $project_table . "<br>" . mysqli_error($db);
@@ -86,7 +86,7 @@ else {
 //Send gant_tasks query
 if (mysqli_query($db, $gantt_tasks)) {
 	// Redirect to tasks page after successful insertion
-	header("Location: display_project.php?p=$project_id");
+	header("Location: projects.php");
 }
 else {
 	echo "Error: " . $gantt_tasks . "<br>" . mysqli_error($db);

@@ -1,6 +1,6 @@
 <!--
 ASSIGNMENTS.PHP
---!>
+-->
 
 
 <!DOCTYPE html>
@@ -19,9 +19,9 @@ include("_sidebar_header.php");?>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="../css/style.css" type="text/css">					<!--css--!>
+	<link rel="stylesheet" href="../css/style.css" type="text/css">					<!--css-->
 
-    <title>Create Task</title>
+    <title>Assign Hours</title>
 </head>
 
 
@@ -75,18 +75,17 @@ else{
 						  
 					  </div>
 					  <div class="form-group col-sm-6">
-						  <label for="hours" class="control-label">Hours</label>				<!--choose hours, first name and last name of employee --!>
+						  <label for="hours" class="control-label">Hours</label>				<!--choose hours, first name and last name of employee -->
 						  <input name="hours" type="text" class="form-control" id="hours" placeholder="hours" required>
 					  </div>
 					  <div class="form-group col-sm-6">
 						  <label for="first" class="control-label">First Name</label>
 						  <input name="first" type="text" class="form-control" id="first" placeholder="First" required>
 					  </div>
-						  <div class="form-group col-sm-6" >
-							  <label for="last" class="control-label" >Last Name</label>
-							  <input name="last" type="text" class="form-control" id="last" placeholder="Lirst" required><br>
-						  </div>
-					  
+					  <div class="form-group col-sm-6" >
+						  <label for="last" class="control-label" >Last Name</label>
+						  <input name="last" type="text" class="form-control" id="last" placeholder="Lirst" required><br>
+					  </div>
 					  <div class="form-group" align= "right">
 						  <button type="submit" class="btn btn-primary">Submit</button>
 					  </div>
@@ -102,4 +101,5 @@ else{
 	    <!-- End Page Content -->
 		
 </body>
-<?php include("_sidebar_footer.php");?>
+<?php include("_sidebar_footer.php");
+include("_autocomplete_footer.php");?>

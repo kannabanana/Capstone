@@ -3,12 +3,9 @@
 
 // Connect to the database
 include("_header.php");
-//include("escape.php");
 //Query User_ID from first and last name
 $first = $_POST[first];
-//$first = $mysqli_real_escape_string($first);
 $last = $_POST[last];
-//$last = $mysqli_real_escape_string($last);
 
 
 //Check First name for " ' " 
@@ -47,9 +44,12 @@ if ($result = $db->query("SELECT user_id from employee_information WHERE first_n
 
 	$hours 		= $_POST[hours];
 	$hours 		= mysql_real_escape_string($hours);
+	
+	$stipend	= $_POST[stipend];
+	$stipend 	= mysql_real_escape_string($stipend);
 
 
-	$assignment_table = "INSERT INTO assignments ( assignment_id, task_id, user_id, hours) VALUES ( NULL , '$task_id', '$user_id', '$hours')";
+	$assignment_table = "INSERT INTO assignments ( assignment_id, task_id, user_id, hours, stipend) VALUES ( NULL , '$task_id', '$user_id', '$hours', '$stipend')";
 
 	// Send query
 	if(isset($user_id) && !empty($user_id)){

@@ -11,10 +11,10 @@ $task_type_id 		= mysql_real_escape_string($task_type_id);
 $project_id 		= $_POST[project];
 $project_id 		= mysql_real_escape_string($project_id);
 
-$start_date 		= date("Y-m-d", strtotime($_POST[start_date]));
+$start_date 		= $_POST[start_date];
 $start_date 		= mysql_real_escape_string($start_date);
 
-$end_date 			= date("Y-m-d", strtotime($_POST[end_date]));
+$end_date 			= $_POST[end_date];
 $end_date 			= mysql_real_escape_string($end_date);
 
 $desc				= $_POST[description];
@@ -49,21 +49,19 @@ else{
 //desc is an SQL keyword and must be surrounded by back ticks (also known as a grave accent)
 $task_table = "INSERT INTO task ( name, start_date, end_date, `desc`, project_id, m_id, task_type_id ) VALUES ('$name', '$start_date', '$end_date', '$desc', '$project_id', '$m_id', '$task_type_id')";
 
+//query to insert the task into the gantt_tasks table
+$gantt_tasks = "INSERT INTO gantt_tasks ( text, start_date, duration, parent, project_id ) VALUES ('$desc', '$start_date', '$duration', '$parent', '$project_id')";
 
 //Send both querys
 if (mysqli_query($db, $task_table)) {
-	//get id of last insert
-	$task_id = mysqli_insert_id($db);
-	//query to insert the task into the gantt_tasks table
-	$gantt_tasks = "INSERT INTO gantt_tasks ( text, start_date, duration, parent, project_id, task_id ) VALUES ('$name', '$start_date', '$duration', '$parent', '$project_id', '$task_id')";
-	
 	if (mysqli_query($db, $gantt_tasks)) {
 		// Redirect to tasks page after successful insertion
-		header("Location: display_task.php?t=$task_id");
+		header("Location: tasks.php");
 	}
 	else {
 		echo "Error: " . $gantt_tasks . "<br>" . mysqli_error($db);
 	}
+	header("Location: tasks.php");
 } 
 else {
     echo "Error: " . $task_table . "<br>" . mysqli_error($db);

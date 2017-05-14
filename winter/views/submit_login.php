@@ -6,19 +6,14 @@ include("_header.php");
 // Declare variables
 $user_name        = $_POST[user_name];
 $user_name = filter_var($user_name,FILTER_SANITIZE_STRING);				//filter username and password against xss
-//$user_name = mysqli_real_escape_string($conn,$_POST['user_name']);
-	 
 
 $password        = $_POST[password];
 $password = filter_var($password,FILTER_SANITIZE_STRING);
-//$password = mysqli_real_escape_string($conn,$_POST['password']);
-
 
 $hashed_password = base64_encode(hash('sha256', $password));
 $clamped_pass	= substr($hashed_password, 0, 40);
 // Clean username input
 $cleanUser = mysqli_real_escape_string($db, $user_name);
-
 
 // Clean password input and encrypt for database comparison
 //$cleanPassword = mysqli_real_escape_string($db, base64_encode(hash('sha256', $password)));

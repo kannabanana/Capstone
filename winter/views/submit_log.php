@@ -9,7 +9,9 @@ include("_header.php");
 	$task_id 	= mysql_real_escape_string($task_id);
 
 	$user_id 	= $_SESSION["uid"];
-
+	
+	$stipend 		= $_POST[stipend];
+	$stipend 		= mysql_real_escape_string($stipend);
 
 	$hours 		= $_POST[hours];
 	$hours 		= mysql_real_escape_string($hours);
@@ -17,8 +19,9 @@ include("_header.php");
 	$desc		= $_POST[description];
 	$desc 		= mysql_real_escape_string($desc);
 	
-	$date 		= $_POST['date'];
-	$date 		= mysql_real_escape_string($date);
+	$date 		= date("Y-m-d", strtotime($_POST['date']));
+	
+	
 	
 	$assigned_hours = 0;
 	//query db for hours based on taskid and userid	
@@ -28,7 +31,7 @@ include("_header.php");
 		}
 	}
 	//insert the logid, userid, taskid etc.
-	$log_table = "INSERT INTO log_task (log_id, user_id, task_id, hours, description, date) VALUES ( NULL , '$user_id','$task_id', '$hours', '$desc', '$date')";
+	$log_table = "INSERT INTO log_task (log_id, user_id, task_id, hours, description, date, stipend) VALUES ( NULL , '$user_id','$task_id', '$hours', '$desc', '$date', '$stipend')";
 
 	// Send query
 		if (mysqli_query($db, $log_table)) {

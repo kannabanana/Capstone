@@ -18,7 +18,6 @@ if($result = $db->query("select * from employee_information where user_id = '$id
 		$result->close();
 }
 $old_pass = $_POST[old_password];					//hash the password
-$old_pass = mysqli_real_escape_string($old_pass);
 $hash_old = base64_encode(hash('sha256', $old_pass));
 $clamped_old = substr($old, 0, 40);
 if(isset($old_pass) && !empty($old_pass)){				//query for a userid based on username and password
@@ -41,8 +40,6 @@ if(isset($old_pass) && !empty($old_pass)){				//query for a userid based on user
 
 // Declare variables
 $password = $_POST[password];
-$password = mysqli_real_escape_string($old_password);
-
 if(isset($password) && !empty($password)){					//store password and hash it
 	$hashed_password = base64_encode(hash('sha256', $password));
 	$clamped_pass	= substr($hashed_password, 0, 40);

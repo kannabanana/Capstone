@@ -5,6 +5,7 @@
 </head>
 <body>
 <?php
+
   include("_header.php");
   // Connect to the database
   
@@ -12,21 +13,19 @@
   
   if (isset($_POST['submit'])){
 	  $user_name = $_POST['user_name'];
-	  $user_name = mysqli_real_escape_string($conn,$_POST['user_name']);
 	  $password = $_POST['password'];
-	  $password = mysqli_real_escape_string($conn,$_POST['password']);
 	}
 
     if (!empty($user_name)){
       // Make sure someone isn't already registered
       $query = "SELECT * FROM log_in WHERE user_name = '$user_name'";
-      $query = $db->prepare($query);
       $data = mysqli_query($db, $query);
 
       if (mysqli_num_rows($data) == 0) {
         // The user_name is unique, so insert the data into the database
         echo '<p>attempting to insert</p>';
          $query = "INSERT INTO log_in (user_name, password) VALUES ('$user_name', '$password')";
+
         $var = mysqli_query($db, $query);
 		
 		if ($var){
