@@ -92,11 +92,11 @@ else{
 					  </div><br>
 					  <div class="form-group col-sm-6">
 						  <label for="start_date" class="control-label">Start Date</label>
-						  <input name="start_date" type="text" class="form-control" id="start_date" placeholder="m/d/y" required>
+						  <input name="start_date" type="date" class="form-control" id="start_date" placeholder="yyyy-mm-dd" required>
 					  </div>
 					  <div class="form-group col-sm-6">
 						  <label for="end_date" class="control-label">End Date</label>
-						  <input name="end_date" type="text" class="form-control" id="end_date" placeholder="m/d/y" required>
+						  <input name="end_date" type="date" class="form-control" id="end_date" placeholder="yyyy-mm-dd" required>
 					  </div><br>
 					  <div class="form-group col-sm-12">
 						  <label for="description" class="control-label">Description</label>
